@@ -1,60 +1,46 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Productos</title>
-<link rel="stylesheet" href="../static/css/estilos.css">
-</head>
-<body>
-<!--cabecera-->
-	<header>
-		<h1>PetStore</h1>
-	</header>
-	<!-- barra de menu -->
-	<nav>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="productos.html">Productos</a></li>
-			<li><a href="consejos.html">Consejos de Salud</a></li>
-			<li><a href="servicio_de_paseo.html">Servicio de paseos</a></li>
-			<li><a href="sucursales.html">Sucursales</a></li>
-			<li><a href="contacto.html">Contactanos</a></li>
-		</ul>
-	</nav>
-	<section id="section-2">
-		<ul >
-			<li>
-				<p>Pañoleta para perro (Pañopet)</p> <img width="200" height="220"
-				alt="un perro" title="pañoleta_perro.jpg"
-				src="../static/images/articulo1.jpg">
-				<ul>
-					<li>Art.2571. Precio: $3000</li>
-				</ul>
-			</li>
-			<li>
-				<p>Cucha para cachorros</p> <img width="200" height="200"
-				alt="un perro" title="cucha_cahorros.jgp"
-				src="../static/images/articulo2.jpg">
-				<ul>
-					<li>Art.1415. Precio: $4000</li>
-				</ul>
-			</li>
-			<li><p>Correas</p> <img width="200" height="200" alt="un perro"
-				title="correas.jgp" src="../static/images/articulo3.jpg">
-				<ul>
-					<li>Art.2530. Precio: $2500</li>
-				</ul></li>
-
-			<li><p>Jaulas</p> <img width="200" height="200" alt="un perro"
-				title="jaulas.jpg" src="../static/images/articulo4.jpg">
-				<ul>
-					<li>Art.2105. Precio: $8000</li>
-				</ul></li>
-		</ul>
-	</section>
-	<footer>
-		<p>Copyright &copy; 2023 - @PetStore - Diseñado por Grupo N° 12 –
-			Jujuy – República Argentina</p>
-	</footer>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Productos</title>
+		<link rel="stylesheet" th:href="@{/css/estilos.css}">
+	</head>
+	<body>
+	<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<section id="section-2">
+			<ul >
+				<li>
+					<p>Pañoleta para perro (Pañopet)</p> <img width="200" height="220"
+					alt="un perro" title="pañoleta_perro.jpg"
+					src="../static/images/articulo1.jpg">
+					<ul>
+						<li>Art.2571. Precio: $3000</li>
+					</ul>
+				</li>
+				<li>
+					<p>Cucha para cachorros</p> <img width="200" height="200"
+					alt="un perro" title="cucha_cahorros.jgp"
+					src="../static/images/articulo2.jpg">
+					<ul>
+						<li>Art.1415. Precio: $4000</li>
+					</ul>
+				</li>
+				<li><p>Correas</p> <img width="200" height="200" alt="un perro"
+					title="correas.jgp" src="../static/images/articulo3.jpg">
+					<ul>
+						<li>Art.2530. Precio: $2500</li>
+					</ul></li>
+	
+				<li><p>Jaulas</p> <img width="200" height="200" alt="un perro"
+					title="jaulas.jpg" src="../static/images/articulo4.jpg">
+					<ul>
+						<li>Art.2105. Precio: $8000</li>
+					</ul></li>
+			</ul>
+		</section>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+	</body>
 </html>

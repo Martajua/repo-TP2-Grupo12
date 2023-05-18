@@ -1,64 +1,51 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>servicio de paseo</title>
-<link rel="shortcut icon" href="../static/images/logo.jpg">
-<link rel="stylesheet" href="../static/css/estilos.css">
-</head>
-<body>
-	<!--cabecera-->
-	<header>
-		<h1>PetStore</h1>
-	</header>
-	<!-- barra de menu -->
-	<nav>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="productos.html">Productos</a></li>
-			<li><a href="consejos.html">Consejos de Salud</a></li>
-			<li><a href="servicio_de_paseo.html">Servicio de paseos</a></li>
-			<li><a href="sucursales.html">Sucursales</a></li>
-			<li><a href="contacto.html">Contactanos</a></li>
-		</ul>
-	</nav>
-	<h2>Informacion Servicio de Paseo</h2>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>Dia</th>
-				<th>Lunes</th>
-				<th>Martes</th>
-				<th>Miercoles</th>
-				<th>Jueves</th>
-				<th>Viernes</th>
-				<th>Sabado</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><b>Horarios</b></td>
-				<td>9 a 12 - 16 a 18</td>
-				<td>9 a 12 - 16 a 18</td>
-				<td>9 a 12 - 16 a 18</td>
-				<td>9 a 12 - 16 a 18</td>
-				<td>9 a 12 - 16 a 18</td>
-				<td>9 a 12 - 16 a 18</td>
-			</tr>
-			<tr>
-				<td><b>Paseador</b></td>
-				<td>Juan Perez</td>
-				<td>Lucas Diaz</td>
-				<td>Juan Perez</td>
-				<td>Maria Gomez</td>
-				<td>Lucas Diaz</td>
-				<td>Roberto Vazquez</td>
-			</tr>
-		</tbody>
-	</table>
-	<footer>
-		<p>Copyright &copy; 2023 - @PetStore - Diseñado por Grupo N° 12 –
-			Jujuy – República Argentina
-	</footer>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+	<meta charset="UTF-8">
+	<title>servicio de paseo</title>
+	<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
+	<link rel="stylesheet" th:href="@{/css/estilos.css}">
+	</head>
+	<body>
+		<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		
+		<h2>Informacion Servicio de Paseo</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Dia</th>
+					<th>Lunes</th>
+					<th>Martes</th>
+					<th>Miercoles</th>
+					<th>Jueves</th>
+					<th>Viernes</th>
+					<th>Sabado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><b>Horarios</b></td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+				</tr>
+				<tr>
+					<td><b>Paseador</b></td>
+					<td>Juan Perez</td>
+					<td>Lucas Diaz</td>
+					<td>Juan Perez</td>
+					<td>Maria Gomez</td>
+					<td>Lucas Diaz</td>
+					<td>Roberto Vazquez</td>
+				</tr>
+			</tbody>
+		</table>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+	</body>
 </html>
