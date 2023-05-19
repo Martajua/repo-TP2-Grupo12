@@ -1,66 +1,44 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Inicio</title>
-<link rel="shortcut icon" href="../static/images/logo.jpg">
-<link rel="stylesheet" href="../static/css/estilos.css">
-</head>
-<body>
-	<!--cabecera-->
-	<header>
-		<h1>PetStore</h1>
-	</header>
-	<!-- barra de menu -->
-	<nav>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="productos.html">Productos</a></li>
-			<li><a href="consejos.html">Consejos de Salud</a></li>
-			<li><a href="servicio_de_paseo.html">Servicio de paseos</a></li>
-			<li><a href="sucursales.html">Sucursales</a></li>
-			<li><a href="contacto.html">Contactanos</a></li>
-		</ul>
-	</nav>
-	<!-- secciones -->
-	<section id="section-1" style="float: left; margin-right: 30%">
-		<h2>Mision y Vision</h2>
-		<article>
-			<h3>Mision</h3>
-			<p>Contribuimos a crear un mundo mejor, ayudando a amar y
-				proteger a sus mascotas. Basados en nuestro equipo de trabajo somos
-				solidarios socialmente, brindando la mayor cantidad de trabajo
-				posible, innovando constantemente y logrando un prestigio que nos
-				haga perdurar en el tiempo. Invirtiendo e innovando en proyectos
-				para ampliar la estructura y seguir creciendo en otras ciudades.
-				Aportando y participando solidariamente para crear una comunidad
-				inclusiva y el cuidado del medio ambiente.</p>
-		</article>
-		<article>
-			<h3>Vision</h3>
-			<p>Ser una empresa moderna y sólida, líder en el país y con
-				proyección internacional. Liderada por un equipo con acceso a la más
-				alta calidad de capacitación y con una mirada colaborativa e
-				inclusiva.</p>
-		</article>
-		<article>
-			<img alt="Mision y Visions" title="IMG-Index"
-				src="../static/images/logo.jpg" width="300" height="300">
-		</article>
-	</section>
-	<!-- Anuncio -->
-	<aside>
-		<div>
-			<!-- imagenpublicidad -->
-		</div>
-		<div>
-			<p>publicidad</p>
-		</div>
-	</aside>
-	<!-- pie de pagina -->
-	<footer>
-		<p>Copyright &copy; 2023 - @PetStore - Diseñado por Grupo N° 12 –
-			Jujuy – República Argentina
-	</footer>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Inicio</title>
+		<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
+		<link rel="stylesheet" th:href="@{/css/estilos.css}">
+	</head>
+	<body>
+		<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<!-- secciones -->
+		<section id="section-1" style="float: left; margin-right: 30%">
+			<h2>Mision y Vision</h2>
+			<article>
+				<h3>Mision</h3>
+				<p>Contribuimos a crear un mundo mejor, ayudando a amar y
+					proteger a sus mascotas. Basados en nuestro equipo de trabajo somos
+					solidarios socialmente, brindando la mayor cantidad de trabajo
+					posible, innovando constantemente y logrando un prestigio que nos
+					haga perdurar en el tiempo. Invirtiendo e innovando en proyectos
+					para ampliar la estructura y seguir creciendo en otras ciudades.
+					Aportando y participando solidariamente para crear una comunidad
+					inclusiva y el cuidado del medio ambiente.</p>
+			</article>
+			<article>
+				<h3>Vision</h3>
+				<p>Ser una empresa moderna y sólida, líder en el país y con
+					proyección internacional. Liderada por un equipo con acceso a la más
+					alta calidad de capacitación y con una mirada colaborativa e
+					inclusiva.</p>
+			</article>
+			<article>
+				<img alt="Mision y Visions" title="IMG-Index"
+					src="../static/images/logo.jpg" width="300" height="300">
+			</article>
+		</section>
+		<!-- Anuncio -->
+		<aside th:replace="~{layouts/aside :: aside}"></aside>
+		<!-- pie de pagina -->
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
 </html>

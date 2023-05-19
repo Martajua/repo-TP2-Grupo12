@@ -1,27 +1,16 @@
 <!DOCTYPE html>
-	<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>Página de Consejos de Salud</title>
-		<link rel="stylesheet" href="../static/css/estilos.css">
+		<link rel="stylesheet" th:href="@{/css/estilos.css}">
 	</head>
 	<body style="margin: 0px;">
 	
 		<!--cabecera-->
-	<header>
-		<h1>PetStore</h1>
-	</header>
+	<header th:replace="~{layouts/header :: header}"></header>
 	<!-- barra de menu -->
-	<nav>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="productos.html">Productos</a></li>
-			<li><a href="consejos.html">Consejos de Salud</a></li>
-			<li><a href="servicio_de_paseo.html">Servicio de paseos</a></li>
-			<li><a href="sucursales.html">Sucursales</a></li>
-			<li><a href="contacto.html">Contactanos</a></li>
-		</ul>
-	</nav>
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
 	
 		<section id="section-1">
 		<section style="padding: 10px 150px; font-family: Arial; line-height: 1.5;">
@@ -79,8 +68,6 @@
 			</article>
 		</section>
 	</section>
-	<footer>
-		<p>Copyright &copy; 2023 - @PetStore - Diseñado por Grupo N° 12 – Jujuy – República Argentina</p>
-	</footer>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
 </html>

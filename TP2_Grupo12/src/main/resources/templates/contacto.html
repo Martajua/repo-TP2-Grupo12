@@ -1,53 +1,39 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<title>Contactenos</title>
-<link rel="shortcut icon" href="../static/images/logo.jpg">
-<link rel="stylesheet" href="../static/css/estilos.css">
-</head>
-<body>
-	<!--cabecera-->
-	<header>
-		<h1>PetStore</h1>
-	</header>
-	<!-- barra de menu -->
-	<nav>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="productos.html">Productos</a></li>
-			<li><a href="consejos.html">Consejos de Salud</a></li>
-			<li><a href="servicio_de_paseo.html">Servicio de paseos</a></li>
-			<li><a href="sucursales.html">Sucursales</a></li>
-			<li><a href="contacto.html">Contactanos</a></li>
-		</ul>
-	</nav>
-	<!-- Formulario de contacto -->
-	<fieldset>
-		<form action="/submit-url">
-			<p>Contactenos</p>
-			<p>CENTRAL: Av. Fuerza Aérea N°200 - B° Alto Comedero</p>
-			<p>Tel: 3885 84039</p>
-			<p>Lunes a Sábados de 9 a 22 hs</p>
-			<ul>
-				<li><a href="https://www.facebook.com/">Facebook</a></li>
-				<li><a href="https://www.instagram.com/">Instagram</a></li>
-				<li><a href="https://twitter.com/?lang=es">Twitter</a></li>
-			</ul>
-			<hr>
-
-			<label>Nombre:<input type="text"
-				placeholder="Ingrese su nombre"></label><br> <label>Email:<input
-				type="email" placeholder="Ingrese un email valido"></label><br>
-			<label>Ciudad:<input type="text"
-				placeholder="Ingrese su ciudad"></label><br> <label>Mensaje:<textarea></textarea></label><br>
-			<button>Enviar</button>
-		</form>
-	</fieldset>
-	<!-- pie de pagina -->
-	<footer>
-		<p>Copyright &copy; 2023 - @PetStore - Diseñado por Grupo N° 12 –
-			Jujuy – República Argentina
-	</footer>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+	<meta charset="UTF-8">
+	<title>Contactenos</title>
+	<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
+	<link rel="stylesheet" th:href="@{/css/estilos.css}">
+	</head>
+	<body>
+		<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<!-- Formulario de contacto -->
+		<fieldset>
+			<form action="/submit-url">
+				<p>Contactenos</p>
+				<p>CENTRAL: Av. Fuerza Aérea N°200 - B° Alto Comedero</p>
+				<p>Tel: 3885 84039</p>
+				<p>Lunes a Sábados de 9 a 22 hs</p>
+				<ul>
+					<li><a href="https://www.facebook.com/">Facebook</a></li>
+					<li><a href="https://www.instagram.com/">Instagram</a></li>
+					<li><a href="https://twitter.com/?lang=es">Twitter</a></li>
+				</ul>
+				<hr>
+	
+				<label>Nombre:<input type="text"
+					placeholder="Ingrese su nombre"></label><br> <label>Email:<input
+					type="email" placeholder="Ingrese un email valido"></label><br>
+				<label>Ciudad:<input type="text"
+					placeholder="Ingrese su ciudad"></label><br> <label>Mensaje:<textarea></textarea></label><br>
+				<button>Enviar</button>
+			</form>
+		</fieldset>
+		<!-- pie de pagina -->
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+	</body>
 </html>
