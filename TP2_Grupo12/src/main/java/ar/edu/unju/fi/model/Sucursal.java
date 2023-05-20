@@ -7,28 +7,28 @@ public class Sucursal {
 	private String direccion;
 	private String telefono;
 	private String horario;
+	private String id;
 	
 	public Sucursal() {
 	}
-	
-	public Sucursal(String provincia, String nombre, String direccion, String telefono, String horario) {
+	public Sucursal(String nombre, String provincia, String direccion, String telefono, String horario, String id) {
 		this.nombre = nombre;
 		this.provincia = provincia;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.horario = horario;
+		this.id = id;
 	}
-	
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String geProvincia() {
+	public String getProvincia() {
 		return provincia;
 	}
-	public void setRegion(String provincia) {
+	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
 	public String getDireccion() {
@@ -49,5 +49,12 @@ public class Sucursal {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 }

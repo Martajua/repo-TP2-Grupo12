@@ -14,77 +14,32 @@
 		<section id="section-3">
 			<h1>SUCURSALES</h1>
 			<ul>
-				 <li><a href="#SucJujuy">Sucursales Jujuy</a></li>
-				<li><a href="#SucSalta">Sucursales Salta</a></li>
+				<li><a th:ref="@{/sucursal/nuevo}">Nueva Sucursal</a></li>
+				<li>
+					<a href="#SucJujuy">Sucursales Jujuy</a>
+					<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY" th:src="@{images/sucursalJUJUY.png}" width="1000" height="100">
+				</li>
+				<li>
+					<a href="#SucSalta">Sucursales Salta</a>
+					<img alt="Imagen Sucursales Salta" title="IMG-SucSALTA" th:src="@{images/sucursalSalta.png}" width="1000" height="100">
+				</li>
 			</ul>
 			</section>
 	
 			<section id="section-4">
-				<article>
-					<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY"
-						th:src="@{images/sucursalJUJUY.png}" width="1000" height="100">
-					<h2 id="SucJujuy">Sucursales Jujuy</h2>
+				<article th:each="sucu: $(sucursales)">
+					<h2 id="SucJujuy" th:text="$(sucu.provincia)"></h2>
 					<ul>
-						<li id="li-1">CASA CENTRAL
+						<li id="li-1" th:text="$(sucu.nombre)">
 							<ul id="lu-1">
-								<li>Av. Fuerza Aérea N°200 - B° Alto Comedero</li>
-								<li>3885 840391</li>
-								<li>Lunes a Sábados de 9 a 21 hs</li>
+								<li th:text="$(sucu.id)"></li>
+								<li th:text="$(sucu.direccion)"></li>
+								<li th:text="$(sucu.telefono)"></li>
+								<li th:text="$(sucu.horario)"></li>
+								<li th:href="@{/sucursal/modificar/}+${sucu.id}">Editar</li>
+								<li th:href="@{/sucursal/eliminar/}+${sucu.id}">Eliminar</li>
 							</ul>
 							<hr>
-						</li>
-						<li id="li-1">SUCURSAL LAVALLE
-							<ul id="lu-1">
-								<li>Lavalle N°222- Local A</li>
-								<li>3885 840394</li>
-								<li>Lunes a Sábados de 9 a 22 hs</li>
-							</ul>
-							<hr>
-						</li>
-						<li id="li-1">SUCURSAL PALPALÁ
-							<ul id="lu-1">
-								<li>Av. Hipólito Yrigoyen N°163 - B° Carolina</li>
-								<li>3884 072167</li>
-								<li>Lunes a Sábados de 9 a 13 hs - 17 a 21hs</li>
-							</ul>
-						</li>
-					</ul>
-				</article>
-				<article>
-					<img alt="Imagen Sucursales Salta" title="IMG-SucSALTA"
-						th:src="@{images/sucursalSalta.png}" width="1000" height="100">
-					<h2 id="SucSalta">Sucursales Salta</h2>
-					<ul>
-						<li id="li-1">SUCURSAL INDEPENDENCIA
-							<ul id="lu-1">
-								<li>Catamarca N° 1397 esq. Independencia</li>
-								<li>3875 642182</li>
-								<li>Lunes a Sábados de 9 a 21 hs</li>
-							</ul>
-							<hr>
-						</li>
-						<li id="li-1">SUCURSAL SAN MARTIN 1
-							<ul id="lu-1">
-								<li>San Martin N° 737</li>
-								<li>3874 857719</li>
-								<li>Lunes a Sábados de 10 a 22 hs</li>
-							</ul>
-							<hr>
-						</li>
-						<li id="li-1">SUCURSAL MENDOZA
-							<ul id="lu-1">
-								<li>Mendoza N° 570</li>
-								<li>3875 690295</li>
-								<li>Lunes a Sábados de 9 a 21hs</li>
-							</ul>
-							<hr>
-						</li >
-						<li id=li-1>SUCURSAL SAN MARTIN 2
-							<ul id="lu-1">
-								<li>San Martin N° 868</li>
-								<li>3876 134119</li>
-								<li>Lunes a Sábados de 10 a 22 hs</li>
-							</ul>
 						</li>
 					</ul>
 				</article>
