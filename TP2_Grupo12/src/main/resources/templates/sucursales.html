@@ -27,8 +27,10 @@
 			</section>
 	
 			<section id="section-4">
-				<article th:each="sucu: $(sucursales)">
-					<h2 id="SucJujuy" th:text="$(sucu.provincia)"></h2>
+				<article>
+					<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY"
+						th:src="@{/images/sucursalJUJUY.png}" width="1000" height="100">
+					<h2 id="SucJujuy">Sucursales Jujuy</h2>
 					<ul>
 						<li id="li-1" th:text="$(sucu.nombre)">
 							<ul id="lu-1">
