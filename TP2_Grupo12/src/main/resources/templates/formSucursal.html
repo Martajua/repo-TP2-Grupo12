@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario Sucursales</title>
+	<link rel="stylesheet" th:href="@{/css/estilos.css}"> <!-- hoja de estilos -->
+</head>
+<body>
+	<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+	<!-- formulario -->
+	<form th:action="#" th:object="#" method="post">
+		<p>Nueva Sucursal</p>
+		<label>Provincia: </label>
+		<select>
+			<option value="">Jujuy</option>
+			<option value="">Salta</option>
+		</select><br> 
+		<label for="nombre">Nombre: </label>
+		<input type="text" th:field="#"/><br><br>
+		<label for="direccion">Direccion: </label>
+		<input type="text" th:field="#"/><br><br>
+		<label for="telefono">Telefono: </label>
+		<input type="text" th:field="#"/><br><br>
+		<label for="horario">Horario de: </label>
+		<input type="time" th:field="#"/>
+		<label for="horario"> a </label>
+		<input type="time" th:field="#"/><br><br>
+		<!-- Boton Agregar -->
+		<input type="submit" value="Agregar">
+	</form>
+	
+	<!-- pie de pagina -->
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Servicio de Paseos</title>
+	<link rel="stylesheet" th:href="@{/css/estilos.css}"> <!-- hoja de estilos -->
+</head>
+<body>
+	<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+	<!-- formulario -->
+	<form th:action="#" th:object="#" method="post">
+		<p>Servicio de Paseo</p>
+		
+		<label for="dia">Dia: </label>
+		<input type="text" th:field="#"/>
+		<label for="horario">Horario: </label>
+		<input type="text" th:field="#"/>
+		<label for="paseador">Paseador: </label>
+		<input type="text" th:field="#"/>
+		
+		<!-- Boton Agregar -->
+		<input type="submit" value="Agregar">
+	</form>
+	<!-- pie de pagina -->
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+</html>
