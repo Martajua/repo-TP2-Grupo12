@@ -21,4 +21,12 @@ public class ListaSucursal {
 		sucursales.add(new Sucursal("Salta", "SUCURSAL MENDOZA", "Mendoza N° 570", "3875 690295", "Lunes a Sábados de 9 a 21hs"));
 		sucursales.add(new Sucursal("Salta", "SUCURSAL SAN MARTIN 2", "San Martin N° 868", "3876 134119", "Lunes a Sábados de 10 a 22 hs"));
 	}
-}
+	
+	public List<Sucursal> getSucursales(){
+		return sucursales;
+	}
+	
+	public void setSucursales(List<Sucursal> sucursales) {
+		this.sucursales = sucursales;
+	}
+ }

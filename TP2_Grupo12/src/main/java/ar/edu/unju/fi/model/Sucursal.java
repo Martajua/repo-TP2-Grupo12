@@ -50,7 +50,4 @@ public class Sucursal {
 		this.horario = horario;
 	}
 	
-	
-	
-	
 }
