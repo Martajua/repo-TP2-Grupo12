@@ -2,11 +2,13 @@ package ar.edu.unju.fi.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/sucursal")
 public class SucursalController {
 
-	@GetMapping("sucursales")
+	@GetMapping("/listado")
 	public String getSucursal() {
 		
 		return "sucursales";
