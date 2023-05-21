@@ -25,6 +25,8 @@ public class SucursalController {
 //		return "sucursales";
 //	}
 	
+
+	
 	@GetMapping("/listado")
 	public String getListaSucursalPage(Model model) {
 		model.addAttribute("sucursales", listaSucursales.getSucursales());
