@@ -11,18 +11,18 @@
 		<!-- barra de menu -->
 		<nav th:replace="~{layouts/nav :: nav}"></nav>
 	<!-- formulario -->
-	<form th:action="#" th:object="#" method="post">
-		<p>Servicio de Paseo</p>
-		
+	<form th:action="${edicion} ? @{/servicios/modificar} : @{/servicios/guardarPaseo}" th:object=${servicios} method="post">
+		<p th:text="${edicion} ? 'Modificar Servicio' : 'Agregar Servicio'"></p>
 		<label for="dia">Dia: </label>
-		<input type="text" th:field="#"/>
+		<input type="text" th:field="*{dia}"/>
+		<label for="idPaseo">Id:</label>
+		<input type="text" th:field="*{idPaseo}"/>
 		<label for="horario">Horario: </label>
-		<input type="text" th:field="#"/>
+		<input type="text" th:field="*{horario}"/>
 		<label for="paseador">Paseador: </label>
-		<input type="text" th:field="#"/>
-		
+		<input type="text" th:field="*{paseador}"/>
 		<!-- Boton Agregar -->
-		<input type="submit" value="Agregar">
+		<input type="submit" th:value="${edicion} ? 'Modificar' : 'Guardar'">
 	</form>
 	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>

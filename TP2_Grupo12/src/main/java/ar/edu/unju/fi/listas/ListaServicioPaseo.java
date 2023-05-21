@@ -14,12 +14,12 @@ public class ListaServicioPaseo {
 	public ListaServicioPaseo() {
 		paseos = new ArrayList<ServicioDePaseo>();
 		
-		paseos.add(new ServicioDePaseo("Lunes","9 a 12 - 16 a 18","Juan Perez"));
-		paseos.add(new ServicioDePaseo("Martes","9 a 12 - 16 a 18","Lucas Diaz"));
-		paseos.add(new ServicioDePaseo("Miercoles","9 a 12 - 16 a 18","Juan Perez"));
-		paseos.add(new ServicioDePaseo("Jueves","9 a 12 - 16 a 18","Maria Gomez"));
-		paseos.add(new ServicioDePaseo("Viernes","9 a 12 - 16 a 18","Lucas Diaz"));
-		paseos.add(new ServicioDePaseo("Sabado","9 a 12 - 16 a 18","Roberto Vazquez"));
+		paseos.add(new ServicioDePaseo("Lunes","9 a 12 - 16 a 18","Juan Perez","id: 1"));
+		paseos.add(new ServicioDePaseo("Martes","9 a 12 - 16 a 18","Lucas Diaz","id: 2"));
+		paseos.add(new ServicioDePaseo("Miercoles","9 a 12 - 16 a 18","Juan Perez","id: 3"));
+		paseos.add(new ServicioDePaseo("Jueves","9 a 12 - 16 a 18","Maria Gomez","id: 4"));
+		paseos.add(new ServicioDePaseo("Viernes","9 a 12 - 16 a 18","Lucas Diaz","id: 5"));
+		paseos.add(new ServicioDePaseo("Sabado","9 a 12 - 16 a 18","Roberto Vazquez","id: 6"));
 	}
 
 	public List<ServicioDePaseo> getPaseos() {

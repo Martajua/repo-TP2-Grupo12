@@ -13,36 +13,25 @@
 		<nav th:replace="~{layouts/nav :: nav}"></nav>
 		
 		<h2>Informacion Servicio de Paseo</h2>
+		<p><a th:href="@{/servicios/nuevoPaseo}"><b>Agregar un Nuevo Servicio</b></a></p>
 		<table border="1">
 			<thead>
 				<tr>
+				    <th>Id</th>
 					<th>Dia</th>
-					<th>Lunes</th>
-					<th>Martes</th>
-					<th>Miercoles</th>
-					<th>Jueves</th>
-					<th>Viernes</th>
-					<th>Sabado</th>
+					<th>Horarios</th>
+					<th>Paseador</th>
+					<th colspan="2">Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><b>Horarios</b></td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-				</tr>
-				<tr>
-					<td><b>Paseador</b></td>
-					<td>Juan Perez</td>
-					<td>Lucas Diaz</td>
-					<td>Juan Perez</td>
-					<td>Maria Gomez</td>
-					<td>Lucas Diaz</td>
-					<td>Roberto Vazquez</td>
+				<tr th:each="serv: ${servicio_de_paseo}">
+				    <td th:text ="${serv.idPaseo}"></td>
+                    <td th:text ="${serv.dia}"></td>
+					<td th:text ="${serv.horario}"></td>
+					<td th:text ="${serv.paseador}"></td>
+					<td><a th:href="@{/servicios/modificar/}+${serv.idPaseo}">Editar</a></td>
+					<td><a th:href="@{/servicios/eliminar/}+${serv.idPaseo}">Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>
