@@ -11,7 +11,7 @@ public class ListaSucursal {
 	
 	public ListaSucursal() {
 		sucursales = new ArrayList<Sucursal>();
-		
+
 		sucursales.add(new Sucursal("Jujuy", "CASA CENTRAL", "Av. Fuerza Aérea N°200 - B° Alto Comedero", "3885 840391", "Lunes a Sábados de 9 a 21 hs","01-01"));
 		sucursales.add(new Sucursal("Jujuy", "SUCURSAL LAVALLE", "Lavalle N°222- Local A", "3885 840394", "Lunes a Sábados de 9 a 22 hs","01-02"));
 		sucursales.add(new Sucursal("Jujuy", "SUCURSAL PALPALÁ", "Av. Hipólito Yrigoyen N°163 - B° Carolina", "3884 072167", "Lunes a Sábados de 9 a 13 hs - 17 a 21hs","01-03"));

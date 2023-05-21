@@ -20,10 +20,12 @@ public class SucursalController {
 	
 	ListaSucursal listaSucursales = new ListaSucursal();
 
-	@GetMapping("/listado")
-	public String getSucursal() {
-		return "sucursales";
-	}
+//	@GetMapping("/listado")
+//	public String getSucursal() {
+//		return "sucursales";
+//	}
+	
+
 	
 	@GetMapping("/listado")
 	public String getListaSucursalPage(Model model) {
@@ -37,7 +39,7 @@ public class SucursalController {
 		boolean edicion=false;
 		model.addAttribute("sucursal", new Sucursal());
 		model.addAttribute("edicion", edicion);
-		return "nueva_sucursal";
+		return "formSucursal";
 	}
 	
 	@PostMapping("/guardar")
@@ -82,7 +84,7 @@ public class SucursalController {
 	public String getEliminatSucursalPage(Model model, @PathVariable(value="id")String id) {
 		
 		for(Sucursal sucu: listaSucursales.getSucursales()) {
-			if(sucu.getNombre().equals(id)) {
+			if(sucu.getId().equals(id)) {
 				listaSucursales.getSucursales().remove(sucu);
 				break;
 			}
