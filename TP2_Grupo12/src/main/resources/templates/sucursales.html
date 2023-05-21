@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<title>Sucursales</title>
-		<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
-		<link rel="stylesheet" th:href="@{/css/estilos.css}">
-	</head>
-	<body>
-		<!--cabecera-->
-		<header th:replace="~{layouts/header :: header}"></header>
-		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav>
-		<section id="section-3">
-			<h1>SUCURSALES</h1>
-			<ul>
-				<li><a th:ref="@{/sucursal/nuevo}">Nueva Sucursal</a></li>
-				<li>
-					<a href="#SucJujuy">Sucursales Jujuy</a>
-					<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY" th:src="@{images/sucursalJUJUY.png}" width="1000" height="100">
-				</li>
-				<li>
-					<a href="#SucSalta">Sucursales Salta</a>
-					<img alt="Imagen Sucursales Salta" title="IMG-SucSALTA" th:src="@{images/sucursalSalta.png}" width="1000" height="100">
-				</li>
-			</ul>
-			</section>
-	
-			<section id="section-4">
-				<article>
-					<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY"
-						th:src="@{/images/sucursalJUJUY.png}" width="1000" height="100">
-					<h2 id="SucJujuy">Sucursales Jujuy</h2>
-					<ul>
-						<li id="li-1" th:text="$(sucu.nombre)">
-							<ul id="lu-1">
-								<li th:text="$(sucu.id)"></li>
-								<li th:text="$(sucu.direccion)"></li>
-								<li th:text="$(sucu.telefono)"></li>
-								<li th:text="$(sucu.horario)"></li>
-								<li th:href="@{/sucursal/modificar/}+${sucu.id}">Editar</li>
-								<li th:href="@{/sucursal/eliminar/}+${sucu.id}">Eliminar</li>
-							</ul>
-							<hr>
-						</li>
-					</ul>
-				</article>
-			</section>
-		<aside id="suc" th:replace="~{layouts/aside :: aside}"></aside>
+<head>
+<meta charset="UTF-8">
+<title>Sucursales</title>
+<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
+<link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+	<!--cabecera-->
+	<header th:replace="~{layouts/header :: header}"></header>
+	<!-- barra de menu -->
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
+	<section id="section-3">
+		<h1>SUCURSALES</h1>
+		<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY"
+			th:src="@{/images/sucursalJUJUY.png}" width="1000" height="100">
 
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
-	</body>
+		<img alt="Imagen Sucursales Salta" title="IMG-SucSALTA"
+			th:src="@{/images/sucursalSalta.png}" width="1000" height="100"><br><br>
+
+		<h3><a th:href="@{/sucursal/nuevo}">Nueva Sucursal</a></h3>
+	</section>
+
+	<section id="section-4">
+		<article th:each="sucu: ${sucursales}">
+			
+			<ul>
+				<li id="li-1" th:text="${sucu.provincia}"></li>
+				<li th:text="${sucu.nombre}"></li>
+				<li th:text="${sucu.id}"></li>
+				<li th:text="${sucu.direccion}"></li>
+				<li th:text="${sucu.telefono}"></li>
+				<li th:text="${sucu.horario}"></li>
+				<li><a th:href="@{/sucursal/modificar/}+${sucu.id}">Editar</a></li>
+				<li><a th:href="@{/sucursal/eliminar/}+${sucu.id}">Eliminar</a></li>
+			</ul>
+		</article>
+	</section>
+	<aside id="suc" th:replace="~{layouts/aside :: aside}"></aside>
+
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
 </html>

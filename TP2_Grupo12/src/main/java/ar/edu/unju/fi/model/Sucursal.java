@@ -11,7 +11,7 @@ public class Sucursal {
 	
 	public Sucursal() {
 	}
-	public Sucursal(String nombre, String provincia, String direccion, String telefono, String horario, String id) {
+	public Sucursal(String provincia,String nombre,  String direccion, String telefono, String horario, String id) {
 		this.nombre = nombre;
 		this.provincia = provincia;
 		this.direccion = direccion;

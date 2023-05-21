@@ -13,10 +13,10 @@
 	<!-- formulario -->
 	<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
 		<p th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'"></p>
-		<label>Provincia: </label>
-		<select>
-			<option value="">Jujuy</option>
-			<option value="">Salta</option>
+		<label for="provincia" >Provincia: </label>
+		<select th:field="*{provincia}">
+			<option value="Jujuy">Jujuy</option>
+			<option value="Salta">Salta</option>
 		</select><br><br>
 		<label for="id">Id: </label>
 		<input type="text" th:field="*{id}"/><br><br>
@@ -26,10 +26,14 @@
 		<input type="text" th:field="*{direccion}"/><br><br>
 		<label for="telefono">Telefono: </label>
 		<input type="text" th:field="*{telefono}"/><br><br>
-		<label for="horario">Horario de: </label>
-		<input type="time" th:field="*{horario}"/>
-		<label for="horario"> a </label>
-		<input type="time" th:field="*{horario}"/><br><br>
+		
+		<label for="horario">Horario: </label>
+		<select th:field="*{horario}">
+			<option value="Lunes a Viernes">Lunes a Viernes </option>
+			<option value="Lunes a Sabado">Lunes a Sabado </option>
+		</select><br><br>
+		<label for="horario">de:</label>
+		<input type="text" th:field="*{horario}"/><br><br>
 		<!-- Boton Agregar -->
 		<input type="submit" th:value="${edicion}?'Modificar':'Guardar'">
 	</form>
