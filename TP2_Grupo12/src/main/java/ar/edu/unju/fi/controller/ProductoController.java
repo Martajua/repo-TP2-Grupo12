@@ -40,9 +40,9 @@ public class ProductoController {
 
 	
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarProductoPage(@ModelAttribute("producto")Producto producto) {
+	public ModelAndView getGuardarProductoPage(@ModelAttribute("productos")Producto productos) {
 		ModelAndView modelView = new ModelAndView("productos");
-		listaProductos.getProductos().add(producto);
+		listaProductos.getProductos().add(productos);
 		modelView.addObject("productos", listaProductos.getProductos());
 		return modelView;
 	}
@@ -59,6 +59,6 @@ public class ProductoController {
 		}
 		model.addAttribute("producto", productoEncontrado);
 		model.addAttribute("edicion", edicion);
-		return "formProducto";
+		return "formProductos";
 	}
 }
