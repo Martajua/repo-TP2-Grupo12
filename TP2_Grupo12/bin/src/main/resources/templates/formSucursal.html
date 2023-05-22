@@ -9,34 +9,34 @@
 	<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav><br><br>
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
 	<!-- formulario -->
 	<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
-		<p class="p ptitulo" th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'"></p>
+		<p th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'"></p>
 		<label for="provincia" >Provincia: </label>
 		<select th:field="*{provincia}">
 			<option value="Jujuy">Jujuy</option>
 			<option value="Salta">Salta</option>
 		</select><br><br>
 		<label for="id">Id: </label>
-		<input placeholder="Ingrese ID: ID 01-00" class="input inputlab" type="text" th:field="*{id}"/><br><br>
+		<input type="text" th:field="*{id}"/><br><br>
 		<label for="nombre">Nombre: </label>
-		<input placeholder="Ingrese Nombre " class="input inputlab" type="text" th:field="*{nombre}"/><br><br>
-		<label for="direccion">Dirección: </label>
-		<input placeholder="Ingrese Dirección"class="input inputlab" type="text" th:field="*{direccion}"/><br><br>
-		<label for="telefono">Telefono:</label>
-		<input placeholder="Ingrese Telefono" class="input inputlab" type="text" th:field="*{telefono}"/><br><br>
+		<input type="text" th:field="*{nombre}"/><br><br>
+		<label for="direccion">Direccion: </label>
+		<input type="text" th:field="*{direccion}"/><br><br>
+		<label for="telefono">Telefono: </label>
+		<input type="text" th:field="*{telefono}"/><br><br>
 		
 		<label for="horario">Horario: </label>
 		<select th:field="*{horario}">
 			<option value="Lunes a Viernes">Lunes a Viernes </option>
-			<option value="Lunes a Sabado">Lunes a Sábado </option>
+			<option value="Lunes a Sabado">Lunes a Sabado </option>
 		</select><br><br>
 		<label for="horario">de:</label>
-		<input placeholder="Ingrese Horario: ejemplo de 9 a 12 - 17 a 21" class="input inputlab" type="text" th:field="*{horario}"/><br><br>
+		<input type="text" th:field="*{horario}"/><br><br>
 		<!-- Boton Agregar -->
-		<input class="button button1" type="submit" th:value="${edicion}?'Modificar':'Guardar'">
-	</form><br><br>
+		<input type="submit" th:value="${edicion}?'Modificar':'Guardar'">
+	</form>
 	
 	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>

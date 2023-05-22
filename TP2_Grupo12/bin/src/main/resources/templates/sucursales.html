@@ -12,14 +12,14 @@
 	<!-- barra de menu -->
 	<nav th:replace="~{layouts/nav :: nav}"></nav>
 	<section id="section-3">
-		<h1>SUCURSALES</h1><br>
+		<h1>SUCURSALES</h1>
 		<img alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY"
-			th:src="@{/images/sucursalJUJUY.png}" width="1000" height="100"><br>
+			th:src="@{/images/sucursalJUJUY.png}" width="1000" height="100">
 
 		<img alt="Imagen Sucursales Salta" title="IMG-SucSALTA"
-			th:src="@{/images/sucursalSalta.png}" width="1000" height="100"><br>
-		
-		<a th:href="@{/sucursal/nuevo}"><button class="button button1" >NUEVA SUCURSAL</button></a><br><br>
+			th:src="@{/images/sucursalSalta.png}" width="1000" height="100"><br><br>
+
+		<h3><a th:href="@{/sucursal/nuevo}">Nueva Sucursal</a></h3>
 	</section>
 
 	<section id="section-4">
@@ -32,20 +32,12 @@
 				<li th:text="${sucu.direccion}"></li>
 				<li th:text="${sucu.telefono}"></li>
 				<li th:text="${sucu.horario}"></li>
+				<li><a th:href="@{/sucursal/modificar/}+${sucu.id}">Editar</a></li>
+				<li><a th:href="@{/sucursal/eliminar/}+${sucu.id}">Eliminar</a></li>
 			</ul>
-				<a th:href="@{/sucursal/modificar/}+${sucu.id}"><button class="button button2" >Editar</button></a><br><br>
-				<a th:href="@{/sucursal/eliminar/}+${sucu.id}"><button class="button button3" >Eliminar</button></a><br><br>
-			
 		</article>
 	</section>
-	<aside id="aside-suc">
-		<div>
-			<!-- imagenpublicidad -->
-		</div>
-		<div>
-			<p>publicidad
-		</div>
-	</aside><br>
+	<aside id="suc" th:replace="~{layouts/aside :: aside}"></aside>
 
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
 </body>
