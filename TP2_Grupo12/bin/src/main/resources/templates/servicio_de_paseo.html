@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+	<meta charset="UTF-8">
+	<title>servicio de paseo</title>
+	<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
+	<link rel="stylesheet" th:href="@{/css/estilos.css}">
+	</head>
+	<body>
+		<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		
+		<h2>Informacion Servicio de Paseo</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Dia</th>
+					<th>Lunes</th>
+					<th>Martes</th>
+					<th>Miercoles</th>
+					<th>Jueves</th>
+					<th>Viernes</th>
+					<th>Sabado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><b>Horarios</b></td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+					<td>9 a 12 - 16 a 18</td>
+				</tr>
+				<tr>
+					<td><b>Paseador</b></td>
+					<td>Juan Perez</td>
+					<td>Lucas Diaz</td>
+					<td>Juan Perez</td>
+					<td>Maria Gomez</td>
+					<td>Lucas Diaz</td>
+					<td>Roberto Vazquez</td>
+				</tr>
+			</tbody>
+		</table>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+	</body>
+</html>

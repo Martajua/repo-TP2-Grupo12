@@ -3,7 +3,7 @@ package ar.edu.unju.fi.model;
 public class Producto {
 	
 	private String nombre;
-	private int codigo;
+	private String codigo;
 	private double precio;
 	private String categoria;
 	private byte descuento;
@@ -14,10 +14,10 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 	public double getPrecio() {
@@ -40,7 +40,7 @@ public class Producto {
 	}
 
 	
-	public Producto(String nombre, int codigo, double precio, String categoria, byte descuento) {
+	public Producto(String nombre, String codigo, double precio, String categoria, byte descuento) {
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.precio = precio;
@@ -48,6 +48,9 @@ public class Producto {
 		this.descuento = descuento;
 	}
 	
+	public Producto() {
+		// TODO Auto-generated constructor stub
+	}
 	public double calcularDescuento() {
 		return precio = this.precio - ((this.precio * this.descuento)/100);
 	}
