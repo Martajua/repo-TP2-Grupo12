@@ -9,21 +9,33 @@
 	<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<nav th:replace="~{layouts/nav :: nav}"></nav><br>
 	<!-- formulario -->
 	<form th:action="${edicion} ? @{/servicios/modificar} : @{/servicios/guardarPaseo}" th:object=${servicios} method="post">
-		<p th:text="${edicion} ? 'Modificar Servicio' : 'Agregar Servicio'"></p>
-		<label for="dia">Dia: </label>
-		<input type="text" th:field="*{dia}"/>
+		<p class="p ptitulo" th:text="${edicion} ? 'Modificar Servicio' : 'Agregar Servicio'"></p>
 		<label for="idPaseo">Id:</label>
-		<input type="text" th:field="*{idPaseo}"/>
+		<input class="input inputlab" placeholder="Ingrese Id" type="text" th:field="*{idPaseo}"/>
+		<label for="dia">Dia:  </label>
+			<select th:field="*{dia}">
+			<option value="Lunes">Lunes</option>
+			<option value="Martes">Martes</option>
+			<option value="Miercoles">Miercoles</option>
+			<option value="Jueves">Jueves</option>
+			<option value="Viernes">Viernes</option>
+			<option value="Sabado">Sabado</option>
+		</select><br>
 		<label for="horario">Horario: </label>
-		<input type="text" th:field="*{horario}"/>
+		<input class="input inputlab" placeholder="Ingrese Horario" type="text" th:field="*{horario}"/>
 		<label for="paseador">Paseador: </label>
-		<input type="text" th:field="*{paseador}"/>
+		<select th:field="*{paseador}">
+			<option value="Juan Perez">Juan Perez </option>
+			<option value="Lucas Diaz">Lucas Diaz</option>
+			<option value="Maria Gomez">Maria Gomez </option>
+			<option value="Roberto Vazquez">Roberto Vazquez </option>
+		</select><br><br>
 		<!-- Boton Agregar -->
-		<input type="submit" th:value="${edicion} ? 'Modificar' : 'Guardar'">
-	</form>
+		<input class="button button1" type="submit" th:value="${edicion} ? 'Modificar' : 'Guardar'">
+	</form><br>
 	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
 </body>

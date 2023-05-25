@@ -10,24 +10,18 @@
 	<!--cabecera-->
 	<header th:replace="~{layouts/header :: header}"></header>
 	<!-- barra de menu -->
-	<nav th:replace="~{layouts/nav :: nav}"></nav>
+	<nav th:replace="~{layouts/nav :: nav}"></nav><br>
 	<!-- formulario -->
-	<form th:action="${edicion}?@{/producto/nuevo}:@{/producto/buscar}"
+	<form th:action="${edicion}?@{/producto/modificar}:@{/producto/guardar}"
 		th:object="${producto}" method="post">
-		<p th:text="${edicion}?'Agregar Producto':'Buscar Producto'"></p>
+		<p class="p ptitulo"  th:text="${edicion}?'Modificar Producto':'Nuevo Producto'"></p>
 
-		<label for="nombre">Nombre: </label> <input type="text"
-			th:field="*{nombre}" /><br>
-		<br> <label for="codigo">Codigo: </label> <input type="number"
+		 <label for="codigo">Codigo: </label> <input class="input inputlab" type="number"
 			th:field="*{codigo}" /><br>
-		<br> <label for="categoria">Categoria:</label> <select
-			th:field="*{categoria}">
-			<option value="Perro Cachorro">Perro Cachorro</option>
-			<option value="Perro Adulto">Perro Adulto</option>
-			<option value="Gato Cachorro">Gato Cachorro</option>
-			<option value="Gato Adulto">Gato Adulto</option>
-		</select><br>
-		<br>
+		<label for="nombre">Nombre: </label> <input class="input inputlab" type="text"
+			th:field="*{nombre}" /><br>
+			<label for="precio">Precio: </label> <input class="input inputlab" type="number"
+			th:field="*{precio}" /><br>
 		<!-- descuento -->
 		<label for="descuento">Descuento: </label> 
 		<select th:field="*{descuento}">
@@ -38,10 +32,19 @@
 			<option value="30">30%</option>
 			<option value="40">40%</option>
 			<option value="50">50%</option>
-		</select><br><br>
+		</select><br><br>	
+			
+		<label for="categoria">Categoria:</label> <select
+			th:field="*{categoria}">
+			<option value="Perro Cachorro">Perro Cachorro</option>
+			<option value="Perro Adulto">Perro Adulto</option>
+			<option value="Gato Cachorro">Gato Cachorro</option>
+			<option value="Gato Adulto">Gato Adulto</option>
+		</select><br>
+		
 		<!-- Boton -->
-		<input type="submit" th:value="${edicion}?'guardar':'Buscar'">
-	</form>
+		<input class="button button1" type="submit" th:value="${edicion}?'Modificar':'Guardar'">
+	</form><br>
 	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
 </body>
