@@ -19,13 +19,6 @@ import ar.edu.unju.fi.model.Sucursal;
 public class SucursalController {
 	
 	ListaSucursal listaSucursales = new ListaSucursal();
-
-//	@GetMapping("/listado")
-//	public String getSucursal() {
-//		return "sucursales";
-//	}
-	
-
 	
 	@GetMapping("/listado")
 	public String getListaSucursalPage(Model model) {

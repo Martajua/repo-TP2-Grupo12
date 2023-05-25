@@ -9,11 +9,10 @@
 	<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<nav th:replace="~{layouts/nav :: nav}"></nav><br>
 			
 		<section id="section-2">
-			<a th:href="@{/producto/nuevo}"><button class="button button1" >AGREGAR PRODUCTO</button></a>
-			<a th:href="@{/producto/buscar}"><button class="button button1" >BUSCAR PRODUCTO</button></a>
+				<a th:href="@{/producto/nuevo}"><button class="button button1" >AGREGAR PRODUCTO</button></a><br>
 			<ul >
 				<li>
 					<p>Pañoleta para perro (Pañopet)</p> <img width="200" height="220"
@@ -43,6 +42,33 @@
 						<li>Art.2105. Precio: $8000</li>
 					</ul></li>
 			</ul>
+			
+			<table border="1">
+			<thead>
+				<tr>
+				    <th>Codigo</th>
+					<th>Nombre</th>
+					<th>Precio</th>
+					<th>Descuento</th>
+					<th>Precio final</th>
+					<th>Categoria</th>
+					<th colspan="2">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="prod: ${productos}">
+				    <td th:text ="${prod.codigo}"></td>
+                    <td th:text ="${prod.nombre}"></td>
+					<td th:text ="${prod.precio}"></td>
+					<td th:text ="${prod.descuento}+'%'"></td>
+					<td th:text ="${prod.precioFinal}"></td>
+					<td th:text ="${prod.categoria}"></td> 
+					
+					<td><a th:href="@{/producto/modificar/}+${prod.codigo}">Editar</a></td>
+					<td><a th:href="@{/producto/eliminar/}+${prod.codigo}">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
 		</section>
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
