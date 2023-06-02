@@ -5,13 +5,17 @@
 		<title>Inicio</title>
 		<link rel="shortcut icon" th:href="@{../static/images/logo.jpg}">
 		<link rel="stylesheet" th:href="@{/css/estilos.css}">
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	<body>
 		<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<div class="container-fluid">
+		<nav th:replace="~{layouts/nav :: nav} " class="nav nav-pills flex-column flex-sm-row"></nav>
+		</div>
 		<!-- secciones -->
+		<div class="container-fluid">
 		<section id="section-1" style="float: left; margin-right: 30%">
 			<h2>Mision y Vision</h2>
 			<article>
@@ -37,8 +41,11 @@
 					th:src="@{images/logo.jpg}" width="300" height="300">
 			</article>
 		</section>
+		</div>
 		<!-- Anuncio -->
 		<aside th:replace="~{layouts/aside :: aside}"></aside>
 		<!-- pie de pagina -->
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		</body>
 </html>
