@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head>
-		<meta charset="UTF-8">
-		</head>
-	<body>
-		<nav th:fragment="nav">
-			<ul>
-				<li><a th:href="@{/index}">Inicio</a></li>
-				<li><a th:href="@{/producto/listado}">Productos</a></li>
-				<li><a th:href="@{/consejo/inicioConsejo}">Consejos de Salud</a></li>
-				<li><a th:href="@{/servicios/inicioPaseo}">Servicio de paseos</a></li>
-				<li><a th:href="@{/sucursal/listado}">Sucursales</a></li>
-				<li><a th:href="@{/contactos/inicioContacto}">Contactanos</a></li>
-			</ul>
-		</nav>
-	</body>
+<head>
+<meta charset="UTF-8">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link th:rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+	<nav th:fragment="nav">
+		<ul>
+			<li><a th:href="@{/index}" class="flex-sm-fill text-sm-center " aria-current="page">Inicio</a></li>
+			<li><a th:href="@{/producto/listado}" class="flex-sm-fill text-sm-center">Productos</a></li>
+			<li><a th:href="@{/consejo/inicioConsejo}" class="flex-sm-fill text-sm-center ">Consejos de Salud</a></li>
+			<li><a th:href="@{/servicios/inicioPaseo}" class="flex-sm-fill text-sm-center ">Servicio de paseos</a></li>
+			<li><a th:href="@{/sucursal/listado}" class="flex-sm-fill text-sm-center ">Sucursales</a></li>
+			<li><a th:href="@{/contactos/inicioContacto}" class="flex-sm-fill text-sm-center">Contactanos</a></li>
+		</ul>
+	</nav>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>
