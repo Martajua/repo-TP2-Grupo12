@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ServicioDePaseo {
 
 	private String dia;

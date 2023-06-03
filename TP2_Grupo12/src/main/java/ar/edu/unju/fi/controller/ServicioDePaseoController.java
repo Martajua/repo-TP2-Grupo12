@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.listas.ListaServicioPaseo;
 import ar.edu.unju.fi.model.ServicioDePaseo;
 
+
 @Controller
 @RequestMapping("/servicios")
 public class ServicioDePaseoController {
-
-	ListaServicioPaseo listaPaseo= new ListaServicioPaseo();
+	
+	@Autowired
+	ListaServicioPaseo listaPaseo;
+	
+	@Autowired
+	private ServicioDePaseo servicios;
+	
 	@GetMapping("inicioPaseo")
 	public String getServicio(Model model) {
 		model.addAttribute("servicio_de_paseo", listaPaseo.getPaseos());
@@ -25,7 +32,7 @@ public class ServicioDePaseoController {
 	@GetMapping("/nuevoPaseo")
 	public String getNuevoPaseoPage(Model model) {
 		boolean edicion=false;
-		model.addAttribute("servicios", new ServicioDePaseo());
+		model.addAttribute("servicios", servicios);
 		model.addAttribute("edicion", edicion);
 		return "formPaseo";
 	}
