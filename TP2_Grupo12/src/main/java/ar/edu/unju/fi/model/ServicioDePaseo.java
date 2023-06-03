@@ -2,12 +2,18 @@ package ar.edu.unju.fi.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 @Component
 public class ServicioDePaseo {
-
+	@NotBlank(message="Debe seleccionar una dia")
 	private String dia;
+	@NotEmpty(message="El valor del horario no puede esta vacio")
 	private String horario;
+	@NotBlank(message="Debe seleccionar una paseador")
 	private String paseador;
+	@NotEmpty(message="El valor del id no puede esta vacio")
 	private String idPaseo;
 	
 	public ServicioDePaseo() {

@@ -205,6 +205,16 @@ form { /*RAMIREZ,CD*/
 
 form p{
 	color:white;
+	
+}
+
+form div{
+	background: #ffffff;
+	border:none;
+	border-radius: 10px;
+	opacity: .4;
+	font-size: 15px;
+	text-align: center;
 }
 .ptitulo{
 	color:#553c9a;
