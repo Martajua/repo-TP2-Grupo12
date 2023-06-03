@@ -8,6 +8,7 @@
 	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	<body>
+	<div class= "container-fluid">
 		<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
@@ -15,6 +16,7 @@
 		
 		<h2>Informacion Servicio de Paseo</h2>
 		<p><a class="button button1" th:href="@{/servicios/nuevoPaseo}"><b>Agregar un Nuevo Servicio</b></a></p>
+		<div class="col-2 col-sm-9 col-md-12">
 		<table border="1">
 			<thead>
 				<tr>
@@ -27,16 +29,18 @@
 			</thead>
 			<tbody>
 				<tr th:each="serv: ${servicio_de_paseo}">
-				    <td th:text ="${serv.idPaseo}"></td>
-                    <td th:text ="${serv.dia}"></td>
-					<td th:text ="${serv.horario}"></td>
-					<td th:text ="${serv.paseador}"></td>
-					<td><a th:href="@{/servicios/modificar/}+${serv.idPaseo}">Editar</a></td>
-					<td><a th:href="@{/servicios/eliminar/}+${serv.idPaseo}">Eliminar</a></td>
+				    <td class="text-center" th:text ="${serv.idPaseo}"></td>
+                    <td class="text-center" th:text ="${serv.dia}"></td>
+					<td class="text-center" th:text ="${serv.horario}"></td>
+					<td class="text-center" th:text ="${serv.paseador}"></td>
+					<td class="text-center"><a th:href="@{/servicios/modificar/}+${serv.idPaseo}">Editar</a></td>
+					<td class="text-center"><a th:href="@{/servicios/eliminar/}+${serv.idPaseo}">Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>
+		</div>
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		</div>
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>
