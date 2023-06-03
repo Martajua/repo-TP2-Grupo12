@@ -5,12 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.listas.ListaServicioPaseo;
 import ar.edu.unju.fi.model.ServicioDePaseo;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -38,8 +40,14 @@ public class ServicioDePaseoController {
 	}
 	
 	@PostMapping("/guardarPaseo")
-	public ModelAndView getGuardarPaseo(@ModelAttribute("servicios")ServicioDePaseo servicios) {
+	public ModelAndView getGuardarPaseo(@Valid @ModelAttribute("servicios")ServicioDePaseo servicios, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("servicio_de_paseo");
+		if(result.hasErrors()) {
+			modelView.setViewName("formPaseo");
+			modelView.addObject("servicios", servicios);
+			return modelView;
+		}
+		
 		listaPaseo.getPaseos().add(servicios);
 		modelView.addObject("servicio_de_paseo", listaPaseo.getPaseos());
 		return modelView;

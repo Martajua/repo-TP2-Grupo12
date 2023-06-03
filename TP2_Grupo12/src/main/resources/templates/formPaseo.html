@@ -16,24 +16,32 @@
 		<p class="p ptitulo" th:text="${edicion} ? 'Modificar Servicio' : 'Agregar Servicio'"></p>
 		<label for="idPaseo">Id:</label>
 		<input class="input inputlab" placeholder="Ingrese Id" type="text" th:field="*{idPaseo}"/>
+		<div class="text-danger" th:if="${#fields.hasErrors('idPaseo')}" th:errors="*{idPaseo}"></div>
 		<label for="dia">Dia:  </label>
 			<select th:field="*{dia}">
+			<option value="" selected>Seleccione una opcion</option>
 			<option value="Lunes">Lunes</option>
 			<option value="Martes">Martes</option>
 			<option value="Miercoles">Miercoles</option>
 			<option value="Jueves">Jueves</option>
 			<option value="Viernes">Viernes</option>
 			<option value="Sabado">Sabado</option>
-		</select><br>
+		</select>
+		<div class="text-danger" th:if="${#fields.hasErrors('dia')}" th:errors="*{dia}"></div>
+		<br>
 		<label for="horario">Horario: </label>
 		<input class="input inputlab" placeholder="Ingrese Horario" type="text" th:field="*{horario}"/>
+		<div class="text-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
 		<label for="paseador">Paseador: </label>
 		<select th:field="*{paseador}">
+			<option value="" selected>Seleccione una opcion</option>
 			<option value="Juan Perez">Juan Perez </option>
 			<option value="Lucas Diaz">Lucas Diaz</option>
 			<option value="Maria Gomez">Maria Gomez </option>
 			<option value="Roberto Vazquez">Roberto Vazquez </option>
-		</select><br><br>
+		</select>
+		<div class="text-danger" th:if="${#fields.hasErrors('paseador')}" th:errors="*{paseador}"></div>
+		<br>
 		<!-- Boton Agregar -->
 		<input class="button button1" type="submit" th:value="${edicion} ? 'Modificar' : 'Guardar'">
 	</form><br>

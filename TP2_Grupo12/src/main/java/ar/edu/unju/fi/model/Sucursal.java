@@ -17,9 +17,9 @@ public class Sucursal {
 	private String direccion;
 	@Size(min=10, max=15, message="El numero de telefono debe contener entre 10 y 15 caracteres")
 	private String telefono;
-	@NotEmpty(message="El valor del horario no puede esta vacio")
+	@NotBlank(message="Debe seleccionar una opcion")
 	private String horario;
-	@NotEmpty(message="El valor del Id no puede esta vacio")
+	@NotEmpty(message="El valor del horario no puede esta vacio")
 	private String id;
 	
 	public Sucursal() {

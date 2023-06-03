@@ -16,31 +16,31 @@
 		<p class="p ptitulo" th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'"></p>
 		<label for="provincia" >Provincia: </label>
 		<select th:field="*{provincia}">
+			<option value="" selected>Seleccione una opcion</option>
 			<option value="Jujuy">Jujuy</option>
 			<option value="Salta">Salta</option>
 		</select>
 		<div class="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></div>
-		<br><br>
 		<label for="id">Id: </label>
-		<input placeholder="Ingrese ID: ID 01-00" class="input inputlab" type="text" th:field="*{id}"/><br><br>
+		<input placeholder="Ingrese ID: ID 01-00" class="input inputlab" type="text" th:field="*{id}"/><br>
 		<div class="text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
 		<label for="nombre">Nombre: </label>
-		<input placeholder="Ingrese Nombre " class="input inputlab" type="text" th:field="*{nombre}"/><br><br>
+		<input placeholder="Ingrese Nombre " class="input inputlab" type="text" th:field="*{nombre}"/><br>
+		<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 		<label for="direccion">Dirección: </label>
-		<input placeholder="Ingrese Dirección"class="input inputlab" type="text" th:field="*{direccion}"/><br><br>
+		<input placeholder="Ingrese Dirección"class="input inputlab" type="text" th:field="*{direccion}"/><br>
 		<div class="text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>	
 		<label for="telefono">Telefono:</label>
-		<input placeholder="Ingrese Telefono" class="input inputlab" type="text" th:field="*{telefono}"/><br><br>
+		<input placeholder="Ingrese Telefono" class="input inputlab" type="text" th:field="*{telefono}"/><br>
 		<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
 		<label for="horario">Horario: </label>
 		<select th:field="*{horario}">
-			<option value="Lunes a Viernes">Lunes a Viernes </option>
-			<option value="Lunes a Sabado">Lunes a Sábado </option>
+			<option value="" selected>Seleccione una opcion</option>
+			<option value="Lunes a Viernes">Lunes a Viernes de 9 a 22  </option>
+			<option value="Lunes a Sabado ">Lunes a Sábado de 9 a 22 </option>
 		</select>
-		<br><br>
-		<label for="horario">de:</label>
-		<input placeholder="Ingrese Horario: ejemplo de 9 a 12 - 17 a 21" class="input inputlab" type="text" th:field="*{horario}"/><br><br>
 		<div class="text-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
+		<br>
 		<!-- Boton Agregar -->
 		<input class="button button1" type="submit" th:value="${edicion}?'Modificar':'Guardar'">
 	</form><br><br>
