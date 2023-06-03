@@ -10,13 +10,14 @@
 	<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav><br>
-			
+		<nav th:replace="~{layouts/nav :: nav}"></nav><br>	
 		<section id="section-2">
+		<div class="container">
 				<a th:href="@{/producto/nuevo}"><button class="button button1" >AGREGAR PRODUCTO</button></a><br>
-			<ul >
+				</div>
+			<ul>
 				<li>
-					<p>Pañoleta para perro (Pañopet)</p> <img width="200" height="220"
+					<p>Pañoleta para perro (Pañopet)</p> <img class="img-fluid" width="200" height="220"
 					alt="un perro" title="pañoleta_perro.jpg"
 					th:src="@{/images/articulo1.jpg}">
 					<ul>
@@ -24,26 +25,26 @@
 					</ul>
 				</li>
 				<li>
-					<p>Cucha para cachorros</p> <img width="200" height="200"
+					<p>Cucha para cachorros</p> <img class="img-fluid" width="200" height="200"
 					alt="un perro" title="cucha_cahorros.jgp"
 					th:src="@{/images/articulo2.jpg}">
 					<ul>
 						<li>Art.1415. Precio: $4000</li>
 					</ul>
 				</li>
-				<li><p>Correas</p> <img width="200" height="200" alt="un perro"
+				<li><p>Correas</p> <img class="img-fluid" width="200" height="200" alt="un perro"
 					title="correas.jgp" th:src="@{/images/articulo3.jpg}">
 					<ul>
 						<li>Art.2530. Precio: $2500</li>
 					</ul></li>
 	
-				<li><p>Jaulas</p> <img width="200" height="200" alt="un perro"
+				<li><p>Jaulas</p> <img class="img-fluid" width="200" height="200" alt="un perro"
 					title="jaulas.jpg" th:src="@{/images/articulo4.jpg}">
 					<ul>
 						<li>Art.2105. Precio: $8000</li>
 					</ul></li>
 			</ul>
-			
+			<div class="col-6 col-sm-6 col-md-12 col-lg-12">
 			<table border="1">
 			<thead>
 				<tr>
@@ -70,6 +71,7 @@
 				</tr>
 			</tbody>
 		</table>
+		</div>
 		</section>
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
