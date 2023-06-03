@@ -2,14 +2,24 @@ package ar.edu.unju.fi.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 @Component
 public class Sucursal {
 	
+	@NotEmpty(message="El valor del nombre no puede esta vacio")
 	private String nombre;
+	@NotBlank(message="Debe seleccionar una provincia")
 	private String provincia;
+	@Size(min=5, max=100, message="La direccion debe contener entre 5 y 100 caractres")
 	private String direccion;
+	@Size(min=10, max=15, message="El numero de telefono debe contener entre 10 y 15 caracteres")
 	private String telefono;
+	@NotEmpty(message="El valor del horario no puede esta vacio")
 	private String horario;
+	@NotEmpty(message="El valor del Id no puede esta vacio")
 	private String id;
 	
 	public Sucursal() {
