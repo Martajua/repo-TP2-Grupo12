@@ -24,7 +24,19 @@ header { /*JUAREZ,MMdelM*/
 	overflow: hidden;
 	background: url(../images/portada.jpg) no-repeat;
 	background-size: cover;
+	padding:auto;
+	
 }
+
+@media screen and (max-width: 1140px) {
+  header {
+    background-image: none;
+    padding:auto;
+    height:auto;
+  }
+}
+
+
 
 header h1 { /*JUAREZ,MMdelM*/
 	color: transparent;
@@ -40,26 +52,50 @@ header h1 { /*JUAREZ,MMdelM*/
 nav { /*JUAREZ,MMdelM*/
 	background-image: repeating-radial-gradient(farthest-side at 5px 5px, #553c9a, #ee4b2b,
 		#553c9a);
-	height: 10vh;
-}
-
-nav ul { /*JUAREZ,MMdelM*/
-	width: 80%;
-	margin: auto;
-	padding: 20px 0;
+	height: auto;
+	
+	width: 100%; 
+ 	margin: auto; 
+ 	padding: auto; 
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	list-style: none;
 	margin: 10 20px;
-}
-
-nav ul li a { /*JUAREZ,MMdelM*/
+	
 	text-decoration: none;
 	color: white;
 	font-family: "Asap", sans-serif;
 	font-size: 1.2rem;
+	
 }
+
+.navbar-nav {
+  margin: 0 auto;
+  display: table;
+  table-layout: fixed;
+  float: none;
+}
+
+/*tp5-dejo comentadas esta lineas del codigo, para que funcione el nav con bootstrap*/
+/*----------------------------------------------------------------------------------*/
+/*nav ul { /*JUAREZ,MMdelM 
+  	width: 80%;  */
+/*  	margin: auto;  */
+/*  	padding: 20px 0;  */
+/* 	display: flex; */
+/* 	align-items: center; */
+/* 	justify-content: space-between; */
+/* 	list-style: none; */
+/* 	margin: 10 20px; */
+/*}*/
+
+/* nav ul li a { JUAREZ,MMdelM */
+/* 	text-decoration: none; */
+/* 	color: white; */
+/* 	font-family: "Asap", sans-serif; */
+/* 	font-size: 1.2rem; */
+/* } */
 
 #section-1 { /*JUAREZ,MMdelM*/
 	display: inline;
