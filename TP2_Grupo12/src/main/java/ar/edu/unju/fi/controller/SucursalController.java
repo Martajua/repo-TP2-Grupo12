@@ -15,37 +15,51 @@ import ar.edu.unju.fi.listas.ListaSucursal;
 import ar.edu.unju.fi.model.Sucursal;
 import jakarta.validation.Valid;
 
-
-
 @Controller
 @RequestMapping("/sucursal")
 public class SucursalController {
-	
+
 	@Autowired
 	ListaSucursal listaSucursales;
-	
+
 	@Autowired
 	private Sucursal sucursal;
-	
+
+	/*
+	 * Se realiza el cargado de la página "sucursales"cuando realice la petición el
+	 * cliente
+	 */
 	@GetMapping("/listado")
 	public String getListaSucursalPage(Model model) {
 		model.addAttribute("sucursales", listaSucursales.getSucursales());
-		
+
 		return "sucursales";
 	}
-	
+
+	/*
+	 * Carga la vista del formulario. Cuando la variable edición sea falsa se va a
+	 * cargar el formulario para realizar un alta
+	 * 
+	 */
+
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
-		boolean edicion=false;
+		boolean edicion = false;
 		model.addAttribute("sucursal", sucursal);
 		model.addAttribute("edicion", edicion);
 		return "formSucursal";
 	}
-	 
+
+	/*
+	 * Recibe los datos enviados por el formulario y realiza el alta de un registro
+	 * 
+	 */
+
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal")Sucursal sucursal, BindingResult result) {
+	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal,
+			BindingResult result) {
 		ModelAndView modelView = new ModelAndView("sucursales");
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			modelView.setViewName("formSucursal");
 			modelView.addObject("sucursal", sucursal);
 			return modelView;
@@ -54,13 +68,21 @@ public class SucursalController {
 		modelView.addObject("sucursales", listaSucursales.getSucursales());
 		return modelView;
 	}
-	
+
+	/*
+	 * Carga la vista del formulario. Cuando la variable edición sea "verdadera" se
+	 * va a cargar el formulario para modificar los datos de acuerdo al ID
+	 * establecido
+	 * 
+	 * 
+	 */
+
 	@GetMapping("/modificar/{id}")
-	public String getModificarSucursalPage(Model model, @PathVariable(value="id")String id) {
+	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") String id) {
 		Sucursal sucursalEncontrada = new Sucursal();
-		boolean edicion=true;
-		for(Sucursal sucu : listaSucursales.getSucursales()) {
-			if(sucu.getId().equals(id)) {
+		boolean edicion = true;
+		for (Sucursal sucu : listaSucursales.getSucursales()) {
+			if (sucu.getId().equals(id)) {
 				sucursalEncontrada = sucu;
 				break;
 			}
@@ -69,11 +91,15 @@ public class SucursalController {
 		model.addAttribute("edicion", edicion);
 		return "formSucursal";
 	}
-	
+
+	/*
+	 * Aqui se reciben los datos enviados por el formularios a modificar.
+	 * 
+	 */
 	@PostMapping("/modificar")
-	public String modificarSucursal(@ModelAttribute("sucursal")Sucursal sucursal){
-		for(Sucursal sucu: listaSucursales.getSucursales()) {
-			if(sucu.getId().equals(sucursal.getId())) {
+	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal) {
+		for (Sucursal sucu : listaSucursales.getSucursales()) {
+			if (sucu.getId().equals(sucursal.getId())) {
 				sucu.setId(sucursal.getId());
 				sucu.setDireccion(sucursal.getDireccion());
 				sucu.setHorario(sucursal.getHorario());
@@ -84,12 +110,17 @@ public class SucursalController {
 		}
 		return "redirect:/sucursal/listado";
 	}
-	
+
+	/*
+	 * 
+	 * Se elimina un registro de acuerdo al id seleccionado
+	 * 
+	 */
 	@GetMapping("/eliminar/{id}")
-	public String getEliminatSucursalPage(Model model, @PathVariable(value="id")String id) {
-		
-		for(Sucursal sucu: listaSucursales.getSucursales()) {
-			if(sucu.getId().equals(id)) {
+	public String getEliminatSucursalPage(Model model, @PathVariable(value = "id") String id) {
+
+		for (Sucursal sucu : listaSucursales.getSucursales()) {
+			if (sucu.getId().equals(id)) {
 				listaSucursales.getSucursales().remove(sucu);
 				break;
 			}
@@ -97,4 +128,3 @@ public class SucursalController {
 		return "redirect:/sucursal/listado";
 	}
 }
-
