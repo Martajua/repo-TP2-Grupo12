@@ -4,28 +4,35 @@
 <meta charset="UTF-8">
 <title>Productos</title>
 <link rel="stylesheet" th:href="@{/css/estilos.css}">
-<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <!-- hoja de estilos -->
 </head>
 <body>
 	<!--cabecera-->
 	<header th:replace="~{layouts/header :: header}"></header>
 	<!-- barra de menu -->
-	<nav th:replace="~{layouts/nav :: nav}"></nav><br>
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
+	<br>
 	<!-- formulario -->
-	<form th:action="${edicion}?@{/producto/modificar}:@{/producto/guardar}"
+	<form
+		th:action="${edicion}?@{/producto/modificar}:@{/producto/guardar}"
 		th:object="${producto}" method="post">
-		<p class="p ptitulo"  th:text="${edicion}?'Modificar Producto':'Nuevo Producto'"></p>
-
-		 <label for="codigo">Codigo: </label> <input class="input inputlab" type="number"
-			th:field="*{codigo}" /><br>
-		<label for="nombre">Nombre: </label> <input class="input inputlab" type="text"
-			th:field="*{nombre}" /><br>
-			<label for="precio">Precio: </label> <input class="input inputlab" type="number"
-			th:field="*{precio}" /><br>
+		<p class="p ptitulo"
+			th:text="${edicion}?'Modificar Producto':'Nuevo Producto'"></p>
+		<label for="codigo">Codigo: </label> <input class="input inputlab"
+			type="number" th:field="*{codigo}" /><br>
+		<div class="text-danger" th:if="${#fields.hasErrors('codigo')}"
+			th:errors="*{codigo}"></div>
+		<label for="nombre">Nombre: </label> <input class="input inputlab"
+			type="text" th:field="*{nombre}" />
+		<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+		<label for="precio">Precio: </label> <input class="input inputlab"
+			type="number" th:field="*{precio}" /><br>
+			<div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 		<!-- descuento -->
-		<label for="descuento">Descuento: </label> 
-		<select th:field="*{descuento}">
+		<label for="descuento">Descuento: </label> <select
+			th:field="*{descuento}">
 			<option value="0">0%</option>
 			<option value="10">10%</option>
 			<option value="15">15%</option>
@@ -33,21 +40,25 @@
 			<option value="30">30%</option>
 			<option value="40">40%</option>
 			<option value="50">50%</option>
-		</select><br><br>	
-			
-		<label for="categoria">Categoria:</label> <select
+		</select><br>
+		<br> <label for="categoria">Categoria:</label> <select
 			th:field="*{categoria}">
+			<option value="" selected>Seleccione una opcion</option>
 			<option value="Perro Cachorro">Perro Cachorro</option>
 			<option value="Perro Adulto">Perro Adulto</option>
 			<option value="Gato Cachorro">Gato Cachorro</option>
 			<option value="Gato Adulto">Gato Adulto</option>
 		</select><br>
-		
+		<div class="text-danger" th:if="${#fields.hasErrors('categoria')}"
+			th:errors="*{categoria}"></div>
 		<!-- Boton -->
-		<input class="button button1" type="submit" th:value="${edicion}?'Modificar':'Guardar'">
-	</form><br>
+		<input class="button button1" type="submit"
+			th:value="${edicion}?'Modificar':'Guardar'">
+	</form>
+	<br>
 	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
