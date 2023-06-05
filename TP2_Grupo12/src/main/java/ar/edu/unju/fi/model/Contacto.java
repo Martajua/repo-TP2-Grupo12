@@ -1,21 +1,31 @@
 package ar.edu.unju.fi.model;
 
-import org.springframework.stereotype.Component;
+/*
+ *Aquí se muestran las librerias importadas que se utilizarán.
+ * 
+ */
 
+import org.springframework.stereotype.Component;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
+/*
+ * En esta clase se definen las variables que se van a utilizar el
+ * formulario de la sección contacto. Las variables declaradas son: nombre - email - ciudad - msj.
+ * 
+ * 
+ */
 @Component
 public class Contacto {
-	@NotEmpty(message="El nombre no puede esta vacio")
+	@NotEmpty(message = "El nombre no puede esta vacio")
 	private String nombre;
-	@Email(message="Ingrese un mail valido")
+	@Email(message = "Ingrese un mail valido")
 	private String email;
-	@NotEmpty(message="La ciudad no puede esta vacio")
+	@NotEmpty(message = "La ciudad no puede esta vacio")
 	private String ciudad;
-	@NotEmpty(message="El mensaje no puede esta vacio")
+	@NotEmpty(message = "El mensaje no puede esta vacio")
 	private String msj;
-	
+
 	public Contacto() {
 	}
 
@@ -57,9 +67,5 @@ public class Contacto {
 	public void setMsj(String msj) {
 		this.msj = msj;
 	}
-	
-	
-	
-	
-	
+
 }
