@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario Consejo</title>
+	<link rel="stylesheet" th:href="@{/css/estilos.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+	<!--cabecera-->
+		<header th:replace="~{layouts/header :: header}"></header>
+		<!-- barra de menu -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav><br><br>
+	<!-- formulario -->
+	<form th:action="${edicion}?@{/consejo/modificar}:@{/consejo/guardar}" th:object="${consejo}" method="post" enctype= “multipart/form-data”>
+		<p class="p ptitulo" th:text="${edicion}?'Modificar Consejo':'Nuevo Consejo'"></p>
+	
+		<label for="numDeConsejo">Numero de consejo: </label>
+		<input placeholder="Ingrese Numero de consejo" class="input inputlab" type="number" th:field="*{num}"/><br>
+		<div class="text-danger" th:if="${#fields.hasErrors('num')}" th:errors="*{num}"></div>
+		
+		<label for="titulo">Título: </label>
+		<input placeholder="Ingrese Título " class="input inputlab" type="text" th:field="*{titulo}"/><br>
+		<div class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+		
+		<label for="mensaje">Mensaje: </label>
+		<input placeholder="Ingrese Mensaje"class="input inputlab" type="text" th:field="*{mensaje}"/><br>
+		<div class="text-danger" th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"></div>	
+		
+<!-- 		<label for="file" class=form-label>Imagen del Consejo</label> -->
+<!-- 		<input type="file" name="file" id="file" class="form-control" -->
+<!-- 		th:text="${consejo.imagen}"><br> -->
+		<!-- 		<div class="text-danger" th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"></div>	
+		 Agregar -->	 	
+		<!-- Boton Agregar -->
+		<input class="button button1" type="submit" th:value="${edicion}?'Modificar':'Guardar'">
+	</form><br><br>
+</body>
+</html>
