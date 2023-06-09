@@ -16,5 +16,12 @@ public class ListaContacto {
 			
 			contactos.add(new Contacto());
 	}
+		public List<Contacto> getContactos() {
+			return contactos;
+		}
+		public void setContactos(List<Contacto> contactos) {
+			this.contactos = contactos;
+		}
+		
 
 }
