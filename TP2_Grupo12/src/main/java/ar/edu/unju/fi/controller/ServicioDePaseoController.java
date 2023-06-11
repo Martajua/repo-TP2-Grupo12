@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,17 +36,21 @@ public class ServicioDePaseoController {
 	 * Se realiza el cargado de la página "servicio de paseo"cuando realice la
 	 * petición el cliente
 	 */
-	@GetMapping("inicioPaseo")
-	public String getServicio(Model model) {
-		model.addAttribute("servicio_de_paseo", listaPaseo.getPaseos());
-		return "servicio_de_paseo";
+	
+	@GetMapping("/inicioPaseo")
+	public ModelAndView getServicioDePaseo() {
+	    ModelAndView modelView = new ModelAndView("servicio_de_paseo");
+	    modelView.addObject("servicios", new ServicioDePaseo());
+	    modelView.addObject("ListaServicioPaseo", ListaServicioPaseo.getListaServicioPaseo());
+	    return modelView;
 	}
-
+	
 	/*
 	 * Carga la vista del formulario. Cuando la variable edición sea falsa se va a
 	 * cargar el formulario para realizar un alta
 	 * 
 	 */
+	
 	@GetMapping("/nuevoPaseo")
 	public String getNuevoPaseoPage(Model model) {
 		boolean edicion = false;
@@ -60,18 +65,34 @@ public class ServicioDePaseoController {
 	 */
 
 	@PostMapping("/guardarPaseo")
-	public ModelAndView getGuardarPaseo(@Valid @ModelAttribute("servicios") ServicioDePaseo servicios,
-			BindingResult result) {
-		ModelAndView modelView = new ModelAndView("servicio_de_paseo");
-		if (result.hasErrors()) {
-			modelView.setViewName("formPaseo");
-			modelView.addObject("servicios", servicios);
-			return modelView;
-		}
+	public ModelAndView postPageSavePaseo(@Valid @ModelAttribute("servicios") ServicioDePaseo servicios, BindingResult result) {
+	    ModelAndView modelView = new ModelAndView("servicio_de_paseo");
+	    if (result.hasErrors()) {
+	        modelView.setViewName("formPaseo");
+	        modelView.addObject("servicios", servicios);
+	        return modelView;
+	    }
 
-		listaPaseo.getPaseos().add(servicios);
-		modelView.addObject("servicio_de_paseo", listaPaseo.getPaseos());
-		return modelView;
+	    int ultimoId = ListaServicioPaseo.getListaServicioPaseo().get(ListaServicioPaseo.getListaServicioPaseo().size() - 1).getIdPaseo();
+	    servicios.setIdPaseo(ultimoId + 1);
+
+	    if (servicios.getIdPaseo() > 0) {
+	        boolean encontrado = false;
+	        for (ServicioDePaseo paseo : ListaServicioPaseo.getListaServicioPaseo()) {
+	            if (paseo.getIdPaseo() == servicios.getIdPaseo()) {
+	                ListaServicioPaseo.getListaServicioPaseo().set(ListaServicioPaseo.getListaServicioPaseo().indexOf(paseo), servicios);
+	                encontrado = true;
+	                break;
+	            }
+	        }
+	        if (!encontrado) {
+	            ListaServicioPaseo.addServicioPaseo(servicios);
+	        }
+	    }
+
+	    modelView.addObject("servicios", new ServicioDePaseo());
+	    modelView.addObject("ListaServicioPaseo", ListaServicioPaseo.getListaServicioPaseo());
+	    return modelView;
 	}
 
 	/*
@@ -83,37 +104,39 @@ public class ServicioDePaseoController {
 	 */
 
 	@GetMapping("/modificar/{idPaseo}")
-	public String getModificarPaseo(Model model, @PathVariable(value = "idPaseo") String idPaseo) {
-		ServicioDePaseo paseoEncontrado = new ServicioDePaseo();
-		boolean edicion = true;
-		for (ServicioDePaseo servPaseo : listaPaseo.getPaseos()) {
-			if (servPaseo.getIdPaseo().equals(idPaseo)) {
-				paseoEncontrado = servPaseo;
-				break;
-			}
-		}
-		model.addAttribute("servicios", paseoEncontrado);
-		model.addAttribute("edicion", edicion);
-		return "formPaseo";
+	public String getModificarPaseo(Model model, @PathVariable(value = "idPaseo") int idPaseo) {
+	    ServicioDePaseo paseoEncontrado = new ServicioDePaseo();
+	    boolean edicion = true;
+	    for (ServicioDePaseo servPaseo : ListaServicioPaseo.getListaServicioPaseo()) {
+	        if (servPaseo.getIdPaseo() == idPaseo) {
+	            paseoEncontrado = servPaseo;
+	            break;
+	        }
+	    }
+	    model.addAttribute("servicios", paseoEncontrado);
+	    model.addAttribute("edicion", edicion);
+	    return "formPaseo";
 	}
 
 	/*
 	 * Aqui se reciben los datos enviados por el formularios a modificar
 	 * 
 	 */
+	
 	@PostMapping("/modificar")
-	public String modificarPaseo(@ModelAttribute("servicios") ServicioDePaseo servicios) {
-		for (ServicioDePaseo servPaseo : listaPaseo.getPaseos()) {
-			if (servPaseo.getIdPaseo().equals(servicios.getIdPaseo())) {
-				servPaseo.setIdPaseo(servicios.getIdPaseo());
-				servPaseo.setPaseador(servicios.getPaseador());
-				servPaseo.setHorario(servicios.getHorario());
-				servPaseo.setDia(servicios.getDia());
-			}
-		}
-		return "redirect:/servicios/inicioPaseo";
+	public String modificarPaseo(@ModelAttribute("servicios") ServicioDePaseo servicios, Model model) {
+	    for (ServicioDePaseo servPaseo : ListaServicioPaseo.getListaServicioPaseo()) {
+	        if (servPaseo.getIdPaseo() == servicios.getIdPaseo()) {
+	            servPaseo.setPaseador(servicios.getPaseador());
+	            servPaseo.setHorario(servicios.getHorario());
+	            servPaseo.setDia(servicios.getDia());
+	            break; // Salir del ciclo una vez que se ha actualizado el objeto
+	        }
+	    }
+	    model.addAttribute("ListaServicioPaseo", ListaServicioPaseo.getListaServicioPaseo()); // Actualizar el modelo con la lista actualizada
+	    return "redirect:/servicios/inicioPaseo";
 	}
-
+	
 	/*
 	 * 
 	 * Se elimina un registro de acuerdo al id seleccionado
@@ -121,14 +144,16 @@ public class ServicioDePaseoController {
 	 */
 
 	@GetMapping("/eliminar/{idPaseo}")
-	public String getEliminatSucursalPage(Model model, @PathVariable(value = "idPaseo") String idPaseo) {
+	public String getEliminatSucursalPage(Model model, @PathVariable(value = "idPaseo") int idPaseo) {
 
-		for (ServicioDePaseo servPaseo : listaPaseo.getPaseos()) {
-			if (servPaseo.getIdPaseo().equals(idPaseo)) {
-				listaPaseo.getPaseos().remove(servPaseo);
+		for (ServicioDePaseo servPaseo : ListaServicioPaseo.getListaServicioPaseo()) {
+			if (servPaseo.getIdPaseo()== idPaseo) {
+				ListaServicioPaseo.getListaServicioPaseo().remove(servPaseo);
 				break;
 			}
 		}
 		return "redirect:/servicios/inicioPaseo";
 	}
 }
+
+

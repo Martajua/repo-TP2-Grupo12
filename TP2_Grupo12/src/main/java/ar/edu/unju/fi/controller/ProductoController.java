@@ -66,7 +66,7 @@ public class ProductoController {
 	 * */
 	
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("productos") Producto producto,
+	public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("producto") Producto producto,
 			BindingResult result) {
 		ModelAndView modelView = new ModelAndView("productos");
 		if (result.hasErrors()) {
@@ -76,7 +76,7 @@ public class ProductoController {
 		}
 		listaProductos.getProductos().add(producto);
 		modelView.addObject("productos", listaProductos.getProductos());
-		modelView.addObject("produtos", producto.calcularDescuento());
+		modelView.addObject("productos", producto.calcularDescuento());
 		return modelView;
 	}
 	
@@ -110,7 +110,10 @@ public class ProductoController {
 	 * */
 	
 	@PostMapping("/modificar")
-	public String modificarProducto(@ModelAttribute("producto") Producto producto) {
+	public String modificarProducto(@ModelAttribute("producto") Producto producto, BindingResult result) {
+		if (result.hasErrors()) {
+	        return "formProductos";
+		}
 		for (Producto prod : listaProductos.getProductos()) {
 			if (prod.getCodigo().equals(producto.getCodigo())) {
 				prod.setCodigo(producto.getCodigo());

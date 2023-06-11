@@ -71,7 +71,10 @@ public class ConsejoController {
 	
 	@PostMapping("/modificar")
 
-	public String modificarConsejos(@ModelAttribute("consejo") Consejo consejo) {
+	public String modificarConsejos(@ModelAttribute("consejo") Consejo consejo, BindingResult result) {
+		if (result.hasErrors()) {
+	        return "formConsejos";
+		}
 		for (Consejo consj : listaConsejos.getConsejos()) {
 			if (consj.getNum() == consejo.getNum()){
 				consj.setNum(consejo.getNum());
