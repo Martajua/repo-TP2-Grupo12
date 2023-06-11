@@ -12,11 +12,11 @@
 		<!-- barra de menu -->
 		<nav th:replace="~{layouts/nav :: nav}"></nav><br>
 	<!-- formulario -->
-	<form th:action="${edicion} ? @{/servicios/modificar} : @{/servicios/guardarPaseo}" th:object=${servicios} method="post">
-		<p class="p ptitulo" th:text="${edicion} ? 'Modificar Servicio' : 'Agregar Servicio'"></p>
-<!-- 		<label for="idPaseo">Id:</label> -->
-<!-- 		<input class="input inputlab" placeholder="Ingrese Id" type="text" th:field="*{idPaseo}"/> -->
-<!-- 		<div class="text-danger" th:if="${#fields.hasErrors('idPaseo')}" th:errors="*{idPaseo}"></div> -->
+	<form th:action="${edicion}?@{/servicio/modificar}:@{/servicio/guardarPaseo}" th:object=${servicio} method="post">
+		<p class="p ptitulo" th:text="${edicion}?'Modificar Servicio':'Agregar Servicio'"></p>
+		<label for="idPaseo">Id:</label>
+		<input class="input inputlab" placeholder="Ingrese Id" type="text" th:field="*{idPaseo}"/>
+		<div class="text-danger" th:if="${#fields.hasErrors('idPaseo')}" th:errors="*{idPaseo}"></div>
 		<label for="dia">Dia:  </label>
 			<select th:field="*{dia}">
 			<option value="" selected>Seleccione una opcion</option>
@@ -43,7 +43,7 @@
 		<div class="text-danger" th:if="${#fields.hasErrors('paseador')}" th:errors="*{paseador}"></div>
 		<br>
 		<!-- Boton Agregar -->
-		<input class="button button1" type="submit" th:value="${edicion} ? 'Modificar' : 'Guardar'">
+		<input class="button button1" type="submit" th:value="${edicion}?'Modificar':'Guardar'">
 	</form><br>
 	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
