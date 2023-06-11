@@ -50,8 +50,8 @@ public class ConsejoServiceImp implements IConsejoService {
 	public void modificar(Consejo consejo) {
 		for(Consejo consj: listaConsejos.getConsejos()) {
 			if(consj.getNum() == consejo.getNum()) {
-				consj.setTitulo(consj.getTitulo());
-				consj.setMensaje(consj.getMensaje());
+				consj.setTitulo(consejo.getTitulo());
+				consj.setMensaje(consejo.getMensaje());
 			}
 		}
 	}
