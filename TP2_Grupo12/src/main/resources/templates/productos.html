@@ -6,73 +6,76 @@
 		<link rel="stylesheet" th:href="@{/css/estilos.css}">
 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
-	<body>
+	<body class="container-fluid text-center">
 	<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
 		<nav th:replace="~{layouts/nav :: nav}"></nav><br>	
-		<section id="section-2">
+		
 		<div class="container">
-				<a th:href="@{/producto/nuevo}"><button class="button button1" >AGREGAR PRODUCTO</button></a><br>
+			<div id="section-2" class="row">
+			<h2 class="d-xs-none d-sm-none d-md-block">Productos de Alta Calidad</h2><br>
+				<div class="d-xs-none d-sm-none d-md-block col-md-3">
+						<h3 >Pañoleta para perro (Pañopet)</h3>
+						<img class="img-fluid" 
+						alt="un perro" title="pañoleta_perro.jpg"
+						th:src="@{/images/articulo1.jpg}">
+						<p>Art.2571. Precio: $3000</p>
 				</div>
-			<ul>
-				<li>
-					<p>Pañoleta para perro (Pañopet)</p> <img class="img-fluid" width="200" height="220"
-					alt="un perro" title="pañoleta_perro.jpg"
-					th:src="@{/images/articulo1.jpg}">
-					<ul>
-						<li>Art.2571. Precio: $3000</li>
-					</ul>
-				</li>
-				<li>
-					<p>Cucha para cachorros</p> <img class="img-fluid" width="200" height="200"
-					alt="un perro" title="cucha_cahorros.jgp"
-					th:src="@{/images/articulo2.jpg}">
-					<ul>
-						<li>Art.1415. Precio: $4000</li>
-					</ul>
-				</li>
-				<li><p>Correas</p> <img class="img-fluid" width="200" height="200" alt="un perro"
+				<div class="d-xs-none d-sm-none d-md-block col-md-3">
+						<h3>Cucha para cachorros</h3>
+						<img class="img-fluid"
+					alt="un perro" title="cucha_cahorros.jgp" th:src="@{/images/articulo2.jpg}">
+						<p>Art.1415. Precio: $4000</p>
+				</div>
+				<div class="d-xs-none d-sm-none d-md-block col-md-3">
+						<h3>Correas</h3>
+						 <img class="img-fluid" alt="un perro"
 					title="correas.jgp" th:src="@{/images/articulo3.jpg}">
-					<ul>
-						<li>Art.2530. Precio: $2500</li>
-					</ul></li>
-	
-				<li><p>Jaulas</p> <img class="img-fluid" width="200" height="200" alt="un perro"
+						<p>Art.2530. Precio: $2500</p>
+				</div>
+				
+				<div class="d-xs-none d-sm-none d-md-block col-md-3">
+						<h3>Jaulas</h3>
+						 <img class="img-fluid"  alt="un perro"
 					title="jaulas.jpg" th:src="@{/images/articulo4.jpg}">
-					<ul>
-						<li>Art.2105. Precio: $8000</li>
-					</ul></li>
-			</ul>
-			<div class="col-6 col-sm-6 col-md-12 col-lg-12">
-			<table border="1">
-			<thead>
-				<tr>
-				    <th>Codigo</th>
-					<th>Nombre</th>
-					<th>Precio</th>
-					<th>Descuento</th>
-					<th>Precio final</th>
-					<th>Categoria</th>
-					<th colspan="2">Opciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="prod: ${productos}">
-				    <td th:text ="${prod.codigo}"></td>
-                    <td th:text ="${prod.nombre}"></td>
-					<td th:text ="${prod.precio}"></td>
-					<td th:text ="${prod.descuento}+'%'"></td>
-					<td th:text ="${prod.precioFinal}"></td>
-					<td th:text ="${prod.categoria}"></td> 
-					
-					<td><a th:href="@{/producto/modificar/}+${prod.codigo}">Editar</a></td>
-					<td><a th:href="@{/producto/eliminar/}+${prod.codigo}">Eliminar</a></td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
-		</section>
+						<p>Art.2105. Precio: $8000</p>
+				</div><br>
+				<a th:href="@{/producto/nuevo}"><button class="button button1" >AGREGAR PRODUCTO</button></a><br>
+			</div>
+		</div><br>
+		<!-- tabla -->
+		<div class="container-fluid">
+			<table class="table-bordered col-12">
+				<thead>
+					<tr>
+					    <th>Codigo</th>
+						<th>Nombre</th>
+						<th>Precio</th>
+						<th>Descuento</th>
+						<th>Precio final</th>
+						<th>Categoria</th>
+						<th colspan="2">Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="prod: ${productos}">
+					    <td th:text ="${prod.codigo}"></td>
+	                    <td th:text ="${prod.nombre}"></td>
+						<td th:text ="${prod.precio}"></td>
+						<td th:text ="${prod.descuento}+'%'"></td>
+						<td th:text ="${prod.precioFinal}"></td>
+						<td th:text ="${prod.categoria}"></td> 
+						
+						<td><a th:href="@{/producto/modificar/}+${prod.codigo}">Editar</a></td>
+						<td><a th:href="@{/producto/eliminar/}+${prod.codigo}">Eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div><br>
+		<!-- Anuncio -->
+		<aside th:replace="~{layouts/aside :: aside}"></aside><br>
+		<!-- pie de pagina -->
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>

@@ -21,7 +21,7 @@ body { /*SALINAS.FA*/
 header { /*JUAREZ,MMdelM*/
 	background: yellow;
 	height: 350px;
-	overflow: hidden;
+	overflow: hidden; /*cuando se desborda el resto del contenido se ocults*/
 	background: url(../images/portada.jpg) no-repeat;
 	background-size: cover;
 	padding:auto;
@@ -35,8 +35,6 @@ header { /*JUAREZ,MMdelM*/
     height:auto;
   }
 }
-
-
 
 header h1 { /*JUAREZ,MMdelM*/
 	color: transparent;
@@ -107,21 +105,12 @@ nav { /*JUAREZ,MMdelM*/
 }
 
 aside { /*JUAREZ,MMdelM*/
-	width: calc(20% - 20px);
-	min-height: 450px;
-	background-color: yellow;
-	margin-left: 80%;
-}
-
-aside div p {
-	color: black;
-	text-align: center;
-}
-
-aside div { /*JUAREZ,MMdelM*/
 	color: black;
 	background-image: url(../images/Publicidad.jpeg);
 	background-size: 250px;
+	height: 200px;
+	overflow: hidden; 
+	
 }
 
 h2 { /*JUAREZ,MMdelM*/
@@ -131,10 +120,8 @@ h2 { /*JUAREZ,MMdelM*/
 	font-weight: bold;
 	letter-spacing: -1px;
 	line-height: 2;
-	text-align: center;
 	background-color: rgb(153, 102, 153);
 	color: rgb(255, 255, 204);
-	margin-bottom: 20px;
 }
 
 h3 { /*JUAREZ,MMdelM*/
@@ -143,8 +130,6 @@ h3 { /*JUAREZ,MMdelM*/
 	font-size: 30px;
 	font-weight: 300;
 	line-height: 32px;
-	margin: 0 0 20px;
-	text-align: center;
 	background-color: #777799;
 	color: #ffffff;
 }
@@ -154,33 +139,33 @@ p { /*JUAREZ,MMdelM*/
 	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 14px;
 	line-height: 24px;
-	margin: 0 0 24px;
-	text-align: justify;
-	text-justify: inter-word;
+
 }
 
+/*tp5-dejo comentadas esta lineas del codigo, para que funcione con bootstrap*/
+/*----------------------------------------------------------------------------------*/
 /*pagina_productos*/
-#section-2 { /*SALINAS.FA*/
-	display: inline;
-	width: calc(75% - 75px);
-	min-height: 500px;
-	background-color: auto;
-	padding: 40px;
-	margin: 20px;
-}
+/* #section-2 { SALINAS.FA */
+/* 	display: inline; */
+/* 	width: calc(75% - 75px); */
+/* 	min-height: 500px; */
+/* 	background-color: auto; */
+/* 	padding: 40px; */
+/* 	margin: 20px; */
+/* } */
 
-#section-2 ul { /*SALINAS.FA*/
-	width: 80%;
-	margin: auto;
-	padding: 20px 0;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	list-style: none;
-	margin: 10 20px;
-}
+/* #section-2 ul { SALINAS.FA */
+/* 	width: 80%; */
+/* 	margin: auto; */
+/* 	padding: 20px 0; */
+/* 	display: flex; */
+/* 	align-items: center; */
+/* 	justify-content: space-between; */
+/* 	list-style: none; */
+/* 	margin: 10 20px; */
+/* } */
 
-#section-2 ul li p { /*SALINAS.FA*/
+#section-2 h3 { /*SALINAS.FA*/
 	text-decoration: none;
 	color: white;
 	text-align: center;
@@ -276,14 +261,14 @@ button { /*RAMIREZ,CD*/
 }
 
 form ul { /*RAMIREZ,CD*/
-	width: 80%;
-	margin: auto;
+/* 	width: 80%; */
+/* 	margin: auto; */
 	padding: 20px 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	list-style: none;
-	margin: 10 20px;
+/* 	margin: 10 20px; */
 }
 
 form ul li a { /*RAMIREZ,CD*/
@@ -298,8 +283,6 @@ table { /*SALINAS.FA*/
 	background-color: white;
 	width: 50%;
 	border-collapse: collapse;
-	margin: 0 auto; /*centra la tabla*/
-	margin-bottom: 2%;
 }
 
 thead { /*SALINAS.FA*/
@@ -309,78 +292,65 @@ thead { /*SALINAS.FA*/
 
 th, td { /*SALINAS.FA*/
 	padding: 10px;
-	text-align: center;
 	font-family: cooper
 }
 
+/*ESTE PARTE QUEDA EN DESUSO*/
+/*tp5-dejo comentadas esta lineas del codigo, para que funcione el nav con bootstrap*/
+/*----------------------------------------------------------------------------------*/
 /*pagina_sucurales*/
-#section-3 { /*RAMIREZ,CD*/
-	display: inline;
-	width: calc(75% - 75px);
-	min-height: 500px;
-	background-color: auto;
-	padding: 40px;
-	margin: 20px;
-}
+/* #section-3 { RAMIREZ,CD */
+/* 	display: inline; */
+/* 	width: calc(75% - 75px); */
+/* 	min-height: 500px; */
+/* 	background-color: auto; */
+/* 	padding: 40px; */
+/* 	margin: 20px; */
+/* } */
 
-#section-3 h1 {/*RAMIREZ,CD*/
-	text-align: center;
-	background-color: orange;
-	color: white;
-	font-family: 'Helvetica Neue', sans-serif;
-	font-size: 60px;
-	font-weight: bold;
-	letter-spacing: -1px;
-	line-height: 2;
-	text-align: center;
-}
+/* #section-3 h1 {RAMIREZ,CD */
+/* 	text-align: center; */
+/* 	background-color: orange; */
+/* 	color: white; */
+/* 	font-family: 'Helvetica Neue', sans-serif; */
+/* 	font-size: 60px; */
+/* 	font-weight: bold; */
+/* 	letter-spacing: -1px; */
+/* 	line-height: 2; */
+/* 	text-align: center; */
+/* } */
 
-#section-3 ul { /*RAMIREZ,CD*/
-	width: 80%;
-	margin: auto;
-	padding: 5px 0;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+/* #section-3 ul { RAMIREZ,CD */
+/* 	width: 80%; */
+/* 	margin: auto; */
+/* 	padding: 5px 0; */
+/* 	display: flex; */
+/* 	align-items: center; */
+/* 	justify-content: space-between; */
+/* 	list-style: none; */
+/* } */
+
+/* #section-3 ul li a { RAMIREZ,CD */
+/* 	text-decoration: none; */
+/* 	color: black; */
+/* 	text-align: center; */
+/* 	font-family: "Asap", sans-serif; */
+/* 	font-size: 1.2rem; */
+/* 	background-color: #FAD7A0 ; */
+	
+/* } */
+
+#section-4 div ul #li-1{/*RAMIREZ,CD*/
+	background: orange;
+	list-style: none;
+	font-family: "Asap", sans-serif;
+	font-size: 1.2rem;
+}
+#section-4 div ul li{/*RAMIREZ,CD*/
+	background:  #FAD7A0;
 	list-style: none;
 }
 
-#section-3 ul li a { /*RAMIREZ,CD*/
-	text-decoration: none;
-	color: black;
-	text-align: center;
-	font-family: "Asap", sans-serif;
-	font-size: 1.2rem;
-	background-color: #FAD7A0 ;
-	
-}
-
-#section-4 { /*RAMIREZ,CD*/
-	display: inline;
-	width: 100%;
-	min-height: 500px;
-	background-color: auto;
-}
-#section-4 article ul li{/*RAMIREZ,CD*/
-	letter-spacing: 2px;
-	text-align: center;
-	line-height: 34px;
-	
-}
-#section-4 article ul #li-1{/*RAMIREZ,CD*/
-	background: orange;
-}
-#section-4 article ul li #lu-1{/*RAMIREZ,CD*/
-	background:  #FAD7A0;
-}
-#aside-suc{/*RAMIREZ,CD*/
-	width: 100%;
-	min-height: 300px;
-	background-color: yellow;
-	margin: auto;
-	background-image: url(../images/Publicidad.jpeg);
-	background-size: 300px;
-}
 footer p { /*SALINAS,FA*/
 	clear: both;
 	color: white;
@@ -392,16 +362,7 @@ footer p { /*SALINAS,FA*/
 	line-height: 50px;
 }
 
-/*img sucursales.html*/
-#section-3 img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
-
-
-/*button sucursales.html*/
+/*button nuevo,editar, eliminar*/
 .button {
   border: none;
   color: white;
@@ -412,9 +373,6 @@ footer p { /*SALINAS,FA*/
   font-size: 16px;
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-left: 35%;
-  width:30%;
-  height:10%;
   border-radius: 10px;
   
 }
@@ -435,9 +393,6 @@ footer p { /*SALINAS,FA*/
   background-color: #4CAF50; 
   color: while; 
   border: 2px solid #4CAF50;
-  margin-left: 43%;
-  width:15%;
-  height:10%;
 }
 
 .button2:hover {
@@ -449,9 +404,6 @@ footer p { /*SALINAS,FA*/
   background-color: #f44336; 
   color: while; 
   border: 2px solid #f44336;
-  margin-left: 43%;
-  width:15%;
-  height:10%;
 }
 
 .button3:hover {

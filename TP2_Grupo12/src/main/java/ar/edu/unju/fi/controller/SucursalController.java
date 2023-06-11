@@ -76,41 +76,75 @@ public class SucursalController {
 	 * 
 	 * 
 	 */
+//
+//	@GetMapping("/modificar/{id}")
+//	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") String id) {
+//		Sucursal sucursalEncontrada = new Sucursal();
+//		boolean edicion = true;
+//		for (Sucursal sucu : listaSucursales.getSucursales()) {
+//			if (sucu.getId().equals(id)) {
+//				sucursalEncontrada = sucu;
+//				break;
+//			}
+//		}
+//		model.addAttribute("sucursal", sucursalEncontrada);
+//		model.addAttribute("edicion", edicion);
+//		return "formSucursal";
+//	}
 
 	@GetMapping("/modificar/{id}")
 	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") String id) {
-		Sucursal sucursalEncontrada = new Sucursal();
-		boolean edicion = true;
-		for (Sucursal sucu : listaSucursales.getSucursales()) {
-			if (sucu.getId().equals(id)) {
-				sucursalEncontrada = sucu;
-				break;
-			}
-		}
-		model.addAttribute("sucursal", sucursalEncontrada);
-		model.addAttribute("edicion", edicion);
-		return "formSucursal";
+	    Sucursal sucursalEncontrada = new Sucursal();
+	    boolean edicion = true;
+	    for (Sucursal sucu : listaSucursales.getSucursales()) {
+	        if (sucu.getId().equals(id)) {
+	            sucursalEncontrada = sucu;
+	            break;
+	        }
+	    }
+	    model.addAttribute("sucursal", sucursalEncontrada);
+	    model.addAttribute("edicion", edicion);
+	    return "formSucursal";
 	}
-
+	
 	/*
 	 * Aqui se reciben los datos enviados por el formularios a modificar.
 	 * 
 	 */
+//	@PostMapping("/modificar")
+//	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal) {
+//		for (Sucursal sucu : listaSucursales.getSucursales()) {
+//			if (sucu.getId().equals(sucursal.getId())) {
+//				sucu.setId(sucursal.getId());
+//				sucu.setDireccion(sucursal.getDireccion());
+//				sucu.setHorario(sucursal.getHorario());
+//				sucu.setNombre(sucursal.getNombre());
+//				sucu.setProvincia(sucursal.getProvincia());
+//				sucu.setTelefono(sucursal.getTelefono());
+//			}
+//		}
+//		return "redirect:/sucursal/listado";
+//	}
+
 	@PostMapping("/modificar")
-	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal) {
-		for (Sucursal sucu : listaSucursales.getSucursales()) {
-			if (sucu.getId().equals(sucursal.getId())) {
-				sucu.setId(sucursal.getId());
-				sucu.setDireccion(sucursal.getDireccion());
-				sucu.setHorario(sucursal.getHorario());
-				sucu.setNombre(sucursal.getNombre());
-				sucu.setProvincia(sucursal.getProvincia());
-				sucu.setTelefono(sucursal.getTelefono());
-			}
-		}
-		return "redirect:/sucursal/listado";
+	public String modificarSucursal(@ModelAttribute("sucursal") @Valid Sucursal sucursal, BindingResult result) {
+	    if (result.hasErrors()) {
+	        return "formSucursal";
+	    }
+	    for (Sucursal sucu : listaSucursales.getSucursales()) {
+	        if (sucu.getId().equals(sucursal.getId())) {
+	            sucu.setId(sucursal.getId());
+	            sucu.setDireccion(sucursal.getDireccion());
+	            sucu.setHorario(sucursal.getHorario());
+	            sucu.setNombre(sucursal.getNombre());
+	            sucu.setProvincia(sucursal.getProvincia());
+	            sucu.setTelefono(sucursal.getTelefono());
+	        }
+	    }
+	    return "redirect:/sucursal/listado";
 	}
 
+	
 	/*
 	 * 
 	 * Se elimina un registro de acuerdo al id seleccionado
