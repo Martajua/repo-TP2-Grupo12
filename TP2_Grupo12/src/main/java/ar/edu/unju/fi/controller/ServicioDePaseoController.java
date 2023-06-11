@@ -68,7 +68,7 @@ public class ServicioDePaseoController {
 	        return modelView;
 	    }
 	    paseoService.guardar(servicio);
-	    modelView.addObject("servicios",paseoService.getServPaseo());
+	    modelView.addObject("servicios",paseoService.getListaServicioPaseo());
 	    return modelView;
 	}
 
