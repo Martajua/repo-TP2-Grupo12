@@ -7,41 +7,38 @@
 		<link rel="stylesheet" th:href="@{/css/estilos.css}">
 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
-	<body>
+	<body class="container-fluid text-center">
 		<!--cabecera-->
 		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- barra de menu -->
-		<nav th:replace="~{layouts/nav :: nav} "></nav>
+		<nav th:replace="~{layouts/nav :: nav} "></nav><br>
 		<!-- secciones -->
-				<section id="section-1" style="float: left; margin-right: 30%">
-					<h2>Mision y Vision</h2>
+		<div class="container">
+			<div class="row">
+				<section class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
+					<h2>Misión y Visión</h2>
 					<article>
-						<h3>Mision</h3>
-						<p>Contribuimos a crear un mundo mejor, ayudando a amar y
-							proteger a sus mascotas. Basados en nuestro equipo de trabajo somos
-							solidarios socialmente, brindando la mayor cantidad de trabajo
-							posible, innovando constantemente y logrando un prestigio que nos
-							haga perdurar en el tiempo. Invirtiendo e innovando en proyectos
-							para ampliar la estructura y seguir creciendo en otras ciudades.
-							Aportando y participando solidariamente para crear una comunidad
-							inclusiva y el cuidado del medio ambiente.</p>
+						<h3>Misión</h3>
+						<p>Contribuimos a crear un mundo mejor, ayudando a amar y proteger a sus mascotas. Basados en nuestro equipo de trabajo somos solidarios socialmente, brindando la mayor cantidad de trabajo posible, innovando constantemente y logrando un prestigio que nos haga perdurar en el tiempo. Invirtiendo e innovando en proyectos para ampliar la estructura y seguir creciendo en otras ciudades. Aportando y participando solidariamente para crear una comunidad inclusiva y el cuidado del medio ambiente.</p>
 					</article>
 					<article>
-						<h3>Vision</h3>
-						<p>Ser una empresa moderna y sólida, líder en el país y con
-							proyección internacional. Liderada por un equipo con acceso a la más
-							alta calidad de capacitación y con una mirada colaborativa e
-							inclusiva.</p>
-					</article>
-					<article>
-						<img alt="Mision y Visions" title="IMG-Index"
-							th:src="@{images/logo.jpg}" width="300" height="300">
+						<h3>Visión</h3>
+						<p>Ser una empresa moderna y sólida, líder en el país y con proyección internacional. Liderada por un equipo con acceso a la más alta calidad de capacitación y con una mirada colaborativa e inclusiva.</p>
 					</article>
 				</section>
-				<!-- Anuncio -->
-				<aside th:replace="~{layouts/aside :: aside}"></aside>
-				<!-- pie de pagina -->
+				<section class="d-xs-none d-sm-none d-md-block d-md-none d-lg-block col-lg-4 col-xl-4 col-xxl-4">
+					<article>
+						<img alt="Misión y Visión" title="IMG-Index" th:src="@{images/logo.jpg}" class="img-fluid">
+					</article>
+				</section>
+			</div>
+		</div>
+		<!-- Anuncio -->
+		<aside th:replace="~{layouts/aside :: aside}"></aside><br>
+		<!-- pie de pagina -->
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-		</body>
+		
+	</body>
 </html>

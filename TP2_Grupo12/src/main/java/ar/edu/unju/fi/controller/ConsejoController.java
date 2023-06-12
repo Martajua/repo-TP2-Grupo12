@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import ar.edu.unju.fi.listas.ListaConsejo;
 import ar.edu.unju.fi.model.Consejo;
-
+import ar.edu.unju.fi.service.IConsejoService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -21,22 +20,18 @@ import jakarta.validation.Valid;
 public class ConsejoController {
 
 	@Autowired
-	ListaConsejo listaConsejos;
-	
-	@Autowired
-	private Consejo consejo;
+	private IConsejoService consejoService;
 	
 	@GetMapping("/inicioConsejo")
 	public String getConsejoPage(Model model) {
-		model.addAttribute("consejos", listaConsejos.getConsejos());
-		
+		model.addAttribute("consejos", consejoService.getListaConsejo());
 		return "consejos";
 	}
 	
 	@GetMapping("/nuevoConsejo")
 	public String getNuevoConsejoPage(Model model) {
 		boolean edicion = false;
-		model.addAttribute("consejo", consejo);
+		model.addAttribute("consejo", consejoService.getConsejo());
 		model.addAttribute("edicion", edicion);
 		return "formConsejos";
 	}
@@ -49,21 +44,15 @@ public class ConsejoController {
 			modelView.addObject("consejo", consejo);
 			return modelView;
 		}
-		listaConsejos.getConsejos().add(consejo);
-		modelView.addObject("consejos", listaConsejos.getConsejos());
+		consejoService.guardar(consejo);
+		modelView.addObject("consejos", consejoService.getListaConsejo());
 		return modelView;
 	}
 	
 	@GetMapping("/modificar/{num}")
 	public String getModificarConsejosPage(Model model, @PathVariable(value = "num") int num) {
-		Consejo consejoEncontrado = new Consejo();
+		Consejo consejoEncontrado = consejoService.buscar(num);
 		boolean edicion = true;
-		for (Consejo consj : listaConsejos.getConsejos()) {
-			if (consj.getNum() == num) {
-				consejoEncontrado = consj;
-				break;
-			}
-		}
 		model.addAttribute("consejo", consejoEncontrado);
 		model.addAttribute("edicion", edicion);
 		return "formConsejos";
@@ -71,27 +60,20 @@ public class ConsejoController {
 	
 	@PostMapping("/modificar")
 
-	public String modificarConsejos(@ModelAttribute("consejo") Consejo consejo) {
-		for (Consejo consj : listaConsejos.getConsejos()) {
-			if (consj.getNum() == consejo.getNum()){
-				consj.setNum(consejo.getNum());
-				consj.setTitulo(consejo.getTitulo());
-				consj.setMensaje(consejo.getMensaje());
-			}
+	public String modificarConsejos(@ModelAttribute("consejo") Consejo consejo, BindingResult result) {
+		if (result.hasErrors()) {
+	        return "formConsejos";
 		}
+		consejoService.modificar(consejo);
 		return "redirect:/consejo/inicioConsejo";
 	}
 	
 	@GetMapping("/eliminar/{num}")
 	public String getEliminarConsejosPage(Model model, @PathVariable(value = "num") int num) {
-
-		for (Consejo consj: listaConsejos.getConsejos()) {
-			if (consj.getNum() == num) {
-				listaConsejos.getConsejos().remove(consj);
-				break;
-			}
-		}
+		Consejo consejoEncontrado = consejoService.buscar(num);
+		consejoService.eliminar(consejoEncontrado);
 		return "redirect:/consejo/inicioConsejo";
 	}
 	
 }
+

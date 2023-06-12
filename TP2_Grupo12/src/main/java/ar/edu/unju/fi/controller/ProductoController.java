@@ -95,7 +95,7 @@ public class ProductoController {
 	/*
 	 * 
 	 * Una vez ingresado los datos se modifican
-	 */
+*/
 
 	@PostMapping("/modificar")
 	public String modificarProducto(@ModelAttribute("producto") Producto producto, BindingResult result) {

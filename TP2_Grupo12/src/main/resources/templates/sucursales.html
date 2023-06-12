@@ -7,46 +7,43 @@
 <link rel="stylesheet" th:href="@{/css/estilos.css}">
 <link th:rel="stylesheet"th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
-<body>
+<body class="container-fluid text-center">
 	<!--cabecera-->
 	<header th:replace="~{layouts/header :: header}"></header>
 	<!-- barra de menu -->
-	<nav th:replace="~{layouts/nav :: nav}"></nav>
-	<section id="section-3">
-		<h1>SUCURSALES</h1>
-		<br> <img class="img-fluid" alt="Imagen Sucursal Jujuy"
-			title="IMG-SucJUJUY" th:src="@{/images/sucursalJUJUY.png}"
-			width="1000" height="100"><br> <img class="img-fluid"
-			alt="Imagen Sucursales Salta" title="IMG-SucSALTA"
-			th:src="@{/images/sucursalSalta.png}" width="1000" height="100"><br>
-
-		<a th:href="@{/sucursal/nuevo}"><button class="button button1">NUEVA
-				SUCURSAL</button></a><br> <br>
-	</section>
-	<section id="section-4">
-		<article th:each="sucu: ${sucursales}">
-
-			<ul>
-				<li id="li-1" th:text="${sucu.provincia}"></li>
-				<li th:text="${sucu.nombre}"></li>
-				<li th:text="${sucu.id}"></li>
-				<li th:text="${sucu.direccion}"></li>
-				<li th:text="${sucu.telefono}"></li>
-				<li th:text="${sucu.horario}"></li>
-			</ul>
-			<a th:href="@{/sucursal/modificar/}+${sucu.id}"><button class="button button2">Editar</button></a> 
-			<a th:href="@{/sucursal/eliminar/}+${sucu.id}"><button class="button button3">Eliminar</button></a>
-		</article>
-	</section>
-	<aside id="aside-suc">
-		<div>
-			<!-- imagenpublicidad -->
+	<nav th:replace="~{layouts/nav :: nav}"></nav><br>
+	
+	<div class="container">
+		<div class="row">
+			<section class="d-xs-none d-sm-none d-md-block d-md-none d-lg-block col-lg-12 col-xl-12 col-xxl-12">
+				<h2>Sucursales PetShop</h2><br> 
+				<img class="img-fluid" alt="Imagen Sucursal Jujuy" title="IMG-SucJUJUY" th:src="@{/images/sucursalJUJUY.png}"><br> 
+				<img class="img-fluid" alt="Imagen Sucursales Salta" title="IMG-SucSALTA" th:src="@{/images/sucursalSalta.png}" ><br><br>
+			</section>
+			<section id="section-4">
+				<a th:href="@{/sucursal/nuevo}"><button class="button button1">NUEVA SUCURSAL</button></a><br><br>
+				<div class="row" th:each="sucu: ${sucursales}">
+					<div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9" >
+						<ul>
+							<li id="li-1" th:text="${sucu.nombre}"></li>
+							<li th:text="${sucu.provincia}"></li>
+							<li th:text="${sucu.id}"></li>
+							<li th:text="${sucu.direccion}"></li>
+							<li th:text="${sucu.telefono}"></li>
+							<li th:text="${sucu.horario}"></li>
+						</ul>
+					</div>
+					<div class="d-grid gap-1 mx-auto col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+						<a th:href="@{/sucursal/modificar/}+${sucu.id}"><button class="button button2">Editar</button></a>
+						<a th:href="@{/sucursal/eliminar/}+${sucu.id}"><button class="button button3">Eliminar</button></a>
+					</div>
+				</div>
+			</section>
 		</div>
-		<div>
-			<p>publicidad
-		</div>
-	</aside>
-	<br>
+	</div>
+	<!-- Anuncio -->
+	<aside th:replace="~{layouts/aside :: aside}"></aside><br>
+	<!-- pie de pagina -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
 	<script type="text/javascript"
 		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
