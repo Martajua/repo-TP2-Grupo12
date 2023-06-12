@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import ar.edu.unju.fi.listas.ListaSucursal;
 import ar.edu.unju.fi.model.Sucursal;
+import ar.edu.unju.fi.service.ISucursalService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -20,10 +19,7 @@ import jakarta.validation.Valid;
 public class SucursalController {
 
 	@Autowired
-	ListaSucursal listaSucursales;
-
-	@Autowired
-	private Sucursal sucursal;
+	private ISucursalService sucursalService;
 
 	/*
 	 * Se realiza el cargado de la página "sucursales"cuando realice la petición el
@@ -31,7 +27,7 @@ public class SucursalController {
 	 */
 	@GetMapping("/listado")
 	public String getListaSucursalPage(Model model) {
-		model.addAttribute("sucursales", listaSucursales.getSucursales());
+		model.addAttribute("sucursales", sucursalService.getLista());
 
 		return "sucursales";
 	}
@@ -45,7 +41,7 @@ public class SucursalController {
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
-		model.addAttribute("sucursal", sucursal);
+		model.addAttribute("sucursal", sucursalService.getSucursal());
 		model.addAttribute("edicion", edicion);
 		return "formSucursal";
 	}
@@ -64,8 +60,8 @@ public class SucursalController {
 			modelView.addObject("sucursal", sucursal);
 			return modelView;
 		}
-		listaSucursales.getSucursales().add(sucursal);
-		modelView.addObject("sucursales", listaSucursales.getSucursales());
+		sucursalService.guardar(sucursal);
+		modelView.addObject("sucursales", sucursalService.getLista());
 		return modelView;
 	}
 
@@ -94,17 +90,12 @@ public class SucursalController {
 
 	@GetMapping("/modificar/{id}")
 	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") String id) {
-	    Sucursal sucursalEncontrada = new Sucursal();
-	    boolean edicion = true;
-	    for (Sucursal sucu : listaSucursales.getSucursales()) {
-	        if (sucu.getId().equals(id)) {
-	            sucursalEncontrada = sucu;
-	            break;
-	        }
-	    }
-	    model.addAttribute("sucursal", sucursalEncontrada);
-	    model.addAttribute("edicion", edicion);
-	    return "formSucursal";
+    
+		Sucursal sucursalEncontrada = sucursalService.buscar(id);
+		boolean edicion = true;
+		model.addAttribute("sucursal", sucursalEncontrada);
+		model.addAttribute("edicion", edicion);
+		return "formSucursal";
 	}
 	
 	/*
@@ -127,21 +118,12 @@ public class SucursalController {
 //	}
 
 	@PostMapping("/modificar")
-	public String modificarSucursal(@ModelAttribute("sucursal") @Valid Sucursal sucursal, BindingResult result) {
-	    if (result.hasErrors()) {
-	        return "formSucursal";
-	    }
-	    for (Sucursal sucu : listaSucursales.getSucursales()) {
-	        if (sucu.getId().equals(sucursal.getId())) {
-	            sucu.setId(sucursal.getId());
-	            sucu.setDireccion(sucursal.getDireccion());
-	            sucu.setHorario(sucursal.getHorario());
-	            sucu.setNombre(sucursal.getNombre());
-	            sucu.setProvincia(sucursal.getProvincia());
-	            sucu.setTelefono(sucursal.getTelefono());
-	        }
-	    }
-	    return "redirect:/sucursal/listado";
+	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal, BindingResult result) {
+		if (result.hasErrors()) {
+			return "formSucursal";
+		}
+		sucursalService.modificar(sucursal);
+		return "redirect:/sucursal/listado";
 	}
 
 	
@@ -152,13 +134,8 @@ public class SucursalController {
 	 */
 	@GetMapping("/eliminar/{id}")
 	public String getEliminatSucursalPage(Model model, @PathVariable(value = "id") String id) {
-
-		for (Sucursal sucu : listaSucursales.getSucursales()) {
-			if (sucu.getId().equals(id)) {
-				listaSucursales.getSucursales().remove(sucu);
-				break;
-			}
-		}
+		Sucursal sucursalEncontrada = sucursalService.buscar(id);
+		sucursalService.eliminar(sucursalEncontrada);
 		return "redirect:/sucursal/listado";
 	}
 }
