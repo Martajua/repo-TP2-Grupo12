@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.listas.ListaConsejo;
-import ar.edu.unju.fi.model.Consejo;
 import ar.edu.unju.fi.service.IConsejoService;
 import jakarta.validation.Valid;
 
@@ -35,7 +35,7 @@ public class ConsejoServiceImp implements IConsejoService {
 	}
 	
 	@Override
-	public Consejo buscar(int num) {
+	public Consejo buscar(Long num) {
 		Consejo consejoEncontrado = null;
 		for(Consejo consj: listaConsejos.getConsejos()) {
 			if(consj.getNum()==num) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import ar.edu.unju.fi.model.Producto;
+import ar.edu.unju.fi.entity.Producto;
 
 @Component
 
@@ -18,10 +18,10 @@ public class ListaProducto {
 		productos = new ArrayList<Producto>();
 		
 			
-		productos.add(new Producto("Pañoleta para perro (Pañopet", "2571", 3000.00, "PERRO ADULTO", (byte) 50));
-		productos.add(new Producto("Cucha para cachorro","1415",4000.00,"PERRO CACHORRO",(byte) 15));
-		productos.add(new Producto("Correa","2530",2500.00,"GATO",(byte) 10));
-		productos.add(new Producto("Jaulas","2105",8000.00,"PERRO ADULTO",(byte) 50));	
+		productos.add(new Producto(1,"Pañoleta para perro (Pañopet", "2571", 3000.00, "PERRO ADULTO", (byte) 50));
+		productos.add(new Producto(2,"Cucha para cachorro","1415",4000.00,"PERRO CACHORRO",(byte) 15));
+		productos.add(new Producto(3,"Correa","2530",2500.00,"GATO",(byte) 10));
+		productos.add(new Producto(4,"Jaulas","2105",8000.00,"PERRO ADULTO",(byte) 50));	
 		
 		for (Producto producto : productos) {
 			   producto.calcularDescuento();
