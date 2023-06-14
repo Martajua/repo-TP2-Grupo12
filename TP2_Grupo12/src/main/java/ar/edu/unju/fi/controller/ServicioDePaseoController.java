@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ar.edu.unju.fi.model.ServicioDePaseo;
+
+import ar.edu.unju.fi.entity.ServicioDePaseo;
 import ar.edu.unju.fi.service.IServicioService;
 import jakarta.validation.Valid;
 
@@ -81,7 +82,7 @@ public class ServicioDePaseoController {
 	 */
 
 	@GetMapping("/modificar/{idPaseo}")
-	public String getModificarPaseo(Model model, @PathVariable(value = "idPaseo") int idPaseo) {
+	public String getModificarPaseo(Model model, @PathVariable(value = "idPaseo") Long idPaseo) {
 	    ServicioDePaseo paseoEncontrado = paseoService.buscar(idPaseo);
 	    boolean edicion = true;
 	    model.addAttribute("servicio", paseoEncontrado);
@@ -107,7 +108,7 @@ public class ServicioDePaseoController {
 	 * 
 	 */
 	@GetMapping("/eliminar/{idPaseo}")
-	public String getEliminatSucursalPage(Model model, @PathVariable(value = "idPaseo") int idPaseo) {
+	public String getEliminatSucursalPage(Model model, @PathVariable(value = "idPaseo") Long idPaseo) {
 		 ServicioDePaseo paseoEncontrado = paseoService.buscar(idPaseo);
 		 paseoService.eliminar(paseoEncontrado);
 		return "redirect:/servicio/inicioPaseo";

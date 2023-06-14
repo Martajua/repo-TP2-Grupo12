@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.PathVariable;
-import ar.edu.unju.fi.model.Producto;
+
+import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.service.IProductoService;
 import jakarta.validation.Valid;
 
@@ -84,7 +85,7 @@ public class ProductoController {
 	 */
 
 	@GetMapping("/modificar/{codigo}")
-	public String getModificarProductoPage(Model model, @PathVariable(value = "codigo") String codigo) {
+	public String getModificarProductoPage(Model model, @PathVariable(value = "codigo") Long codigo) {
 		Producto productoEncontrado = productoService.buscar(codigo);
 		boolean edicion = true;
 		model.addAttribute("producto", productoEncontrado);
@@ -112,7 +113,7 @@ public class ProductoController {
 	 * 
 	 */
 	@GetMapping("eliminar/{codigo}")
-	public String getEliminarProductoPaga(Model model, @PathVariable(value = "codigo") String codigo) {
+	public String getEliminarProductoPaga(Model model, @PathVariable(value = "codigo") Long codigo) {
 		Producto productoEncontrado = productoService.buscar(codigo);
 		productoService.eliminar(productoEncontrado);
 		return "redirect:/producto/listado";
