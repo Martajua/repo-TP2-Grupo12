@@ -1,7 +1,8 @@
 package ar.edu.unju.fi.service;
 
 import java.util.List;
-import ar.edu.unju.fi.model.ServicioDePaseo;
+
+import ar.edu.unju.fi.entity.ServicioDePaseo;
 import jakarta.validation.Valid;
 
 
@@ -11,7 +12,7 @@ public interface IServicioService {
 	
 	void guardar(@Valid ServicioDePaseo paseo);
 	
-	ServicioDePaseo buscar(int id);
+	ServicioDePaseo buscar(Long id);
 	
 	void modificar(ServicioDePaseo paseo);
 	

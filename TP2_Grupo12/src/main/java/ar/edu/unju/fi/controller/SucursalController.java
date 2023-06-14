@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ar.edu.unju.fi.model.Sucursal;
+
+import ar.edu.unju.fi.entity.Sucursal;
 import ar.edu.unju.fi.service.ISucursalService;
 import jakarta.validation.Valid;
 
@@ -89,7 +90,7 @@ public class SucursalController {
 //	}
 
 	@GetMapping("/modificar/{id}")
-	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") String id) {
+	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") Long id) {
     
 		Sucursal sucursalEncontrada = sucursalService.buscar(id);
 		boolean edicion = true;
@@ -133,7 +134,7 @@ public class SucursalController {
 	 * 
 	 */
 	@GetMapping("/eliminar/{id}")
-	public String getEliminatSucursalPage(Model model, @PathVariable(value = "id") String id) {
+	public String getEliminatSucursalPage(Model model, @PathVariable(value = "id") Long id) {
 		Sucursal sucursalEncontrada = sucursalService.buscar(id);
 		sucursalService.eliminar(sucursalEncontrada);
 		return "redirect:/sucursal/listado";

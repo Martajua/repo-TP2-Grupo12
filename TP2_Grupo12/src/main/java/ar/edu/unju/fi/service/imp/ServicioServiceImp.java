@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.ServicioDePaseo;
 import ar.edu.unju.fi.listas.ListaServicioPaseo;
-import ar.edu.unju.fi.model.ServicioDePaseo;
 import ar.edu.unju.fi.service.IServicioService;
 import jakarta.validation.Valid;
 
@@ -35,7 +35,7 @@ public class ServicioServiceImp implements IServicioService{
 	}
 
 	@Override
-	public ServicioDePaseo buscar(int id) {
+	public ServicioDePaseo buscar(Long id) {
 		ServicioDePaseo paseoEncontrado = null;
 		for(ServicioDePaseo pas: listaPaseos.getPaseos()) {
 			if (pas.getIdPaseo() == id) {

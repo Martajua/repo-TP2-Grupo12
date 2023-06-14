@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import ar.edu.unju.fi.model.Consejo;
+import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.service.IConsejoService;
 import jakarta.validation.Valid;
 
@@ -50,7 +50,7 @@ public class ConsejoController {
 	}
 	
 	@GetMapping("/modificar/{num}")
-	public String getModificarConsejosPage(Model model, @PathVariable(value = "num") int num) {
+	public String getModificarConsejosPage(Model model, @PathVariable(value = "num") Long num) {
 		Consejo consejoEncontrado = consejoService.buscar(num);
 		boolean edicion = true;
 		model.addAttribute("consejo", consejoEncontrado);
@@ -69,7 +69,7 @@ public class ConsejoController {
 	}
 	
 	@GetMapping("/eliminar/{num}")
-	public String getEliminarConsejosPage(Model model, @PathVariable(value = "num") int num) {
+	public String getEliminarConsejosPage(Model model, @PathVariable(value = "num") Long num) {
 		Consejo consejoEncontrado = consejoService.buscar(num);
 		consejoService.eliminar(consejoEncontrado);
 		return "redirect:/consejo/inicioConsejo";

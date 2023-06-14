@@ -3,8 +3,9 @@ package ar.edu.unju.fi.service.imp;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ar.edu.unju.fi.entity.Sucursal;
 import ar.edu.unju.fi.listas.ListaSucursal;
-import ar.edu.unju.fi.model.Sucursal;
 import ar.edu.unju.fi.service.ISucursalService;
 
 @Service
@@ -29,7 +30,7 @@ public class SucursalServiceImp implements ISucursalService {
 		listaSucursales.getSucursales().add(sucursal);
 	}
 
-	public Sucursal buscar(String id) {
+	public Sucursal buscar(Long id) {
 		Sucursal sucursalEncontrada = null;
 		for (Sucursal sucu : listaSucursales.getSucursales()) {
 			if (sucu.getId().equals(id)) {
