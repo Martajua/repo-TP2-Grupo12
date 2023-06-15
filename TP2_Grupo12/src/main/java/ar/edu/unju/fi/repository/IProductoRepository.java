@@ -9,5 +9,5 @@ import ar.edu.unju.fi.entity.Producto;
 @Repository
 public interface IProductoRepository extends CrudRepository<Producto, Long> {
 	
-	public List <Producto> findByEstado(boolean estado);
+	public List <Producto> findByestadoProd(boolean estado);
 }

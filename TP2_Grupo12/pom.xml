@@ -59,7 +59,7 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		    <version>3.1.0</version>
+<!--		    <version>3.1.0</version>-->
 		</dependency>
 		<!--MySql conector java-->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
