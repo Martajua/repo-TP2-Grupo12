@@ -1,16 +1,17 @@
 package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import nonapi.io.github.classgraph.json.Id;
+/*
+ * Al importar el paquete jakarta.persistence.*, tengo acceso a todas las clases y anotaciones para
+ * trabajar con JPA en mi aplicación Spring Boot sin tener que importarlas una por una.
+ */
+import jakarta.persistence.*;
+/*
+ *  constraints.* está importando todas las clases del paquete jakarta.validation.constraints,
+ *  que incluye todas las anotaciones de validación proporcionadas por la especificación de Bean Validation. 
+ */
+import jakarta.validation.constraints.*;
+//import nonapi.io.github.classgraph.json.Id;
 
 @Component
 @Entity
