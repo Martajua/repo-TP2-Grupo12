@@ -8,15 +8,11 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import nonapi.io.github.classgraph.json.Id;
+//import nonapi.io.github.classgraph.json.Id;
 
 /*
  * En esta clase se definen las variables que se van a utilizar el

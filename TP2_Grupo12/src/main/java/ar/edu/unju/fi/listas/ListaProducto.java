@@ -18,10 +18,14 @@ public class ListaProducto {
 		productos = new ArrayList<Producto>();
 		
 			
-		productos.add(new Producto(1,"Pañoleta para perro (Pañopet", "2571", 3000.00, "PERRO ADULTO", (byte) 50));
-		productos.add(new Producto(2,"Cucha para cachorro","1415",4000.00,"PERRO CACHORRO",(byte) 15));
-		productos.add(new Producto(3,"Correa","2530",2500.00,"GATO",(byte) 10));
-		productos.add(new Producto(4,"Jaulas","2105",8000.00,"PERRO ADULTO",(byte) 50));	
+		productos.add(new Producto((long) 1,"Pañoleta para perro (Pañopet), 2571", 3000.00, "PERRO ADULTO", (byte) 50,0.0, true));
+		/*
+		 * productos.add(new Producto((long)
+		 * 2,"Cucha para cachorro","1415",4000.00,"PERRO CACHORRO",(byte) 15));
+		 * productos.add(new Producto((long) 3,"Correa","2530",2500.00,"GATO",(byte)
+		 * 10)); productos.add(new Producto((long)
+		 * 4,"Jaulas","2105",8000.00,"PERRO ADULTO",(byte) 50));
+		 */
 		
 		for (Producto producto : productos) {
 			   producto.calcularDescuento();

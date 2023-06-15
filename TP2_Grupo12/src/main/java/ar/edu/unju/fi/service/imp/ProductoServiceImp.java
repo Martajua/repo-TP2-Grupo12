@@ -9,7 +9,7 @@ import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.listas.ListaProducto;
 import ar.edu.unju.fi.service.IProductoService;
 
-@Service
+@Service("productoServiceImp")
 public class ProductoServiceImp implements IProductoService {
 
 	@Autowired

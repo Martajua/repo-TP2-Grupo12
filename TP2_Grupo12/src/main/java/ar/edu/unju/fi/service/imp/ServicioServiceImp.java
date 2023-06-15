@@ -10,7 +10,7 @@ import ar.edu.unju.fi.listas.ListaServicioPaseo;
 import ar.edu.unju.fi.service.IServicioService;
 import jakarta.validation.Valid;
 
-@Service
+@Service("servicioServiceImp")
 public class ServicioServiceImp implements IServicioService{
 
 	/*
