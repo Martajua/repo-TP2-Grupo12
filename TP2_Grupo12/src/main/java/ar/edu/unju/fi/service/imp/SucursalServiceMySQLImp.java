@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.entity.Sucursal;
 import ar.edu.unju.fi.repository.ISucursalRepository;
 import ar.edu.unju.fi.service.ISucursalService;
-@Service("sucursalServiceMySql")
+@Service("sucursalServiceMySQL")
 public class SucursalServiceMySQLImp implements ISucursalService {
 	
 	@Autowired

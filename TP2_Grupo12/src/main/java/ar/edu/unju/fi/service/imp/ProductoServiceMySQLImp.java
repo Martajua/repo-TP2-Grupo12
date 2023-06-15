@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.repository.IProductoRepository;
 import ar.edu.unju.fi.service.IProductoService;
-@Service("productoServiceMySQL")
+@Service("productoServiceMysql")
 public class ProductoServiceMySQLImp implements IProductoService {
 	
 	@Autowired
@@ -18,7 +18,7 @@ public class ProductoServiceMySQLImp implements IProductoService {
 
 	@Override
 	public List<Producto> getLista() {
-		return productoRepository.findByEstado(true);
+		return productoRepository.findByestadoProd(true);
 	}
 
 	@Override
