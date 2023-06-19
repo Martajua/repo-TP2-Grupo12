@@ -6,18 +6,17 @@ package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 //import nonapi.io.github.classgraph.json.Id;
 
 /*
  * En esta clase se definen las variables que se van a utilizar el
  * formulario de la sección sucursal. Las variables declaradas son: nombre - provincia - direccion - telefono-
- * horario - id.
+ * horario -Fecha fundacion - id.
  * 
  * 
  */
@@ -41,6 +40,9 @@ public class Sucursal {
 	
 	@Column(name="sucu_nombre")
 	@NotEmpty(message = "El valor del nombre no puede esta vacio")
+	@Size(min = 3, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
+	/* Con el PAttern acepta nombres con tilde */
+	@Pattern(regexp = "[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ ]+", message = "El nombre solo puede contener letras y espacios")
 	private String nombre;
 	
 	@Column(name="sucu_provincia")
@@ -52,7 +54,9 @@ public class Sucursal {
 	private String direccion;
 	
 	@Column(name="sucu_telefono",length = 15,nullable = false)
+	@NotBlank(message="Debe ingresar Telefono")
 	@Size(min = 10, max = 15, message = "El numero de telefono debe contener entre 10 y 15 caracteres")
+	@Pattern(regexp ="[0-9]+",message="El Telefono solo debe tener numeros")
 	private String telefono;
 	
 	@Column(name="sucu_horario")
@@ -65,6 +69,9 @@ public class Sucursal {
 	 * */
 	
 	@Column(name="sucu_fecha_inicio")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@NotNull(message = "Debe ingresar una fecha de Apertura")
+	@Past(message = "La fecha debe ser menor a la fecha actual")
 	private LocalDate fechaInicio;
 	
 	/*
