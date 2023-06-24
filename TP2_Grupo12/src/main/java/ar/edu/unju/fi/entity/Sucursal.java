@@ -31,7 +31,7 @@ public class Sucursal {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="sucu_id")
-	@NotEmpty(message = "El valor del horario no puede esta vacio")
+	@NotNull(message = "El valor del id no puede estar vacío")
 	private Long id;
 
 	/*
@@ -135,7 +135,6 @@ public class Sucursal {
 	}
 	public Sucursal(Long id, String nombre, String provincia,String direccion, String telefono, String horario, LocalDate fechaInicio,
 			boolean estadoSucu) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.provincia = provincia;

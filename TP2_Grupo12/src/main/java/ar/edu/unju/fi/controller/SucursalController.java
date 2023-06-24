@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.entity.Sucursal;
+import ar.edu.unju.fi.service.ICommonService;
 import ar.edu.unju.fi.service.ISucursalService;
 import jakarta.validation.Valid;
 
@@ -23,6 +24,9 @@ public class SucursalController {
 	@Autowired
 	@Qualifier("sucursalServiceMySQL")
 	private ISucursalService sucursalService;
+	
+	@Autowired
+	private ICommonService commonService;
 
 	/*
 	 * Se realiza el cargado de la página "sucursales"cuando realice la petición el
@@ -45,6 +49,8 @@ public class SucursalController {
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
 		model.addAttribute("sucursal", sucursalService.getSucursal());
+		model.addAttribute("provincias", commonService.getProvincias());
+		model.addAttribute("horarios", commonService.getHorarios());
 		model.addAttribute("edicion", edicion);
 		return "formSucursal";
 	}
@@ -55,15 +61,19 @@ public class SucursalController {
 	 */
 
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal,
-			BindingResult result) {
+	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("sucursales");
 		if (result.hasErrors()) {
 			modelView.setViewName("formSucursal");
+			modelView.addObject("provincias",commonService.getProvincias());
+			modelView.addObject("horarios", commonService.getHorarios());
 			modelView.addObject("sucursal", sucursal);
 			return modelView;
 		}
+		sucursal.setEstadoSucu(true);//PRUEBA SETEAR PARA VER SI GUARDA
+		sucursal.setId((long) (sucursalService.getLista().size()+1));//PRUEBA SETEAR PARA VER SI GUARDA
 		sucursalService.guardar(sucursal);
+		
 		modelView.addObject("sucursales", sucursalService.getLista());
 		return modelView;
 	}
@@ -97,6 +107,8 @@ public class SucursalController {
 		Sucursal sucursalEncontrada = sucursalService.buscar(id);
 		boolean edicion = true;
 		model.addAttribute("sucursal", sucursalEncontrada);
+		model.addAttribute("provincias", commonService.getProvincias());
+		model.addAttribute("horarios", commonService.getHorarios());
 		model.addAttribute("edicion", edicion);
 		return "formSucursal";
 	}
@@ -121,8 +133,12 @@ public class SucursalController {
 //	}
 
 	@PostMapping("/modificar")
-	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal, BindingResult result) {
+	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal, BindingResult result, Model model) {
 		if (result.hasErrors()) {
+			model.addAttribute("provincias", commonService.getProvincias());
+			model.addAttribute("horarios", commonService.getHorarios());
+			boolean edicion = true;
+			model.addAttribute("edicion", edicion);
 			return "formSucursal";
 		}
 		sucursalService.modificar(sucursal);
