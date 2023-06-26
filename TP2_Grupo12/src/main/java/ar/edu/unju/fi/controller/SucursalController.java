@@ -17,6 +17,7 @@ import ar.edu.unju.fi.service.ICommonService;
 import ar.edu.unju.fi.service.ISucursalService;
 import jakarta.validation.Valid;
 
+//En esta clase se hace referencia a las sucursales de nuestro proyecto
 @Controller
 @RequestMapping("/sucursal")
 public class SucursalController {
@@ -24,27 +25,19 @@ public class SucursalController {
 	@Autowired
 	@Qualifier("sucursalServiceMySQL")
 	private ISucursalService sucursalService;
-	
+
 	@Autowired
 	private ICommonService commonService;
 
-	/*
-	 * Se realiza el cargado de la página "sucursales"cuando realice la petición el
-	 * cliente
-	 */
+	// método que realiza la carga de la vista de sucursales.
 	@GetMapping("/listado")
 	public String getListaSucursalPage(Model model) {
 		model.addAttribute("sucursales", sucursalService.getLista());
-
+		// retorna la vista sucursales
 		return "sucursales";
 	}
 
-	/*
-	 * Carga la vista del formulario. Cuando la variable edición sea falsa se va a
-	 * cargar el formulario para realizar un alta
-	 * 
-	 */
-
+	// Carga la vista del formulario para realizar un alta del registro
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
@@ -55,55 +48,30 @@ public class SucursalController {
 		return "formSucursal";
 	}
 
-	/*
-	 * Recibe los datos enviados por el formulario y realiza el alta de un registro
-	 * 
-	 */
-
+//Recibe los datos enviados por el formulario y realiza el alta de un registro
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal, BindingResult result) {
+	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal,
+			BindingResult result) {
 		ModelAndView modelView = new ModelAndView("sucursales");
 		if (result.hasErrors()) {
 			modelView.setViewName("formSucursal");
-			modelView.addObject("provincias",commonService.getProvincias());
+			modelView.addObject("provincias", commonService.getProvincias());
 			modelView.addObject("horarios", commonService.getHorarios());
 			modelView.addObject("sucursal", sucursal);
 			return modelView;
 		}
-		sucursal.setEstadoSucu(true);//PRUEBA SETEAR PARA VER SI GUARDA
-		sucursal.setId((long) (sucursalService.getLista().size()+1));//PRUEBA SETEAR PARA VER SI GUARDA
+		sucursal.setEstadoSucu(true);// PRUEBA SETEAR PARA VER SI GUARDA
+		sucursal.setId((long) (sucursalService.getLista().size() + 1));// PRUEBA SETEAR PARA VER SI GUARDA
 		sucursalService.guardar(sucursal);
-		
+
 		modelView.addObject("sucursales", sucursalService.getLista());
 		return modelView;
 	}
 
-	/*
-	 * Carga la vista del formulario. Cuando la variable edición sea "verdadera" se
-	 * va a cargar el formulario para modificar los datos de acuerdo al ID
-	 * establecido
-	 * 
-	 * 
-	 */
-//
-//	@GetMapping("/modificar/{id}")
-//	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") String id) {
-//		Sucursal sucursalEncontrada = new Sucursal();
-//		boolean edicion = true;
-//		for (Sucursal sucu : listaSucursales.getSucursales()) {
-//			if (sucu.getId().equals(id)) {
-//				sucursalEncontrada = sucu;
-//				break;
-//			}
-//		}
-//		model.addAttribute("sucursal", sucursalEncontrada);
-//		model.addAttribute("edicion", edicion);
-//		return "formSucursal";
-//	}
-
+//método que carga un formulario con los datos seleccionados para realizar una modificación
 	@GetMapping("/modificar/{id}")
 	public String getModificarSucursalPage(Model model, @PathVariable(value = "id") Long id) {
-    
+
 		Sucursal sucursalEncontrada = sucursalService.buscar(id);
 		boolean edicion = true;
 		model.addAttribute("sucursal", sucursalEncontrada);
@@ -112,26 +80,8 @@ public class SucursalController {
 		model.addAttribute("edicion", edicion);
 		return "formSucursal";
 	}
-	
-	/*
-	 * Aqui se reciben los datos enviados por el formularios a modificar.
-	 * 
-	 */
-//	@PostMapping("/modificar")
-//	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal) {
-//		for (Sucursal sucu : listaSucursales.getSucursales()) {
-//			if (sucu.getId().equals(sucursal.getId())) {
-//				sucu.setId(sucursal.getId());
-//				sucu.setDireccion(sucursal.getDireccion());
-//				sucu.setHorario(sucursal.getHorario());
-//				sucu.setNombre(sucursal.getNombre());
-//				sucu.setProvincia(sucursal.getProvincia());
-//				sucu.setTelefono(sucursal.getTelefono());
-//			}
-//		}
-//		return "redirect:/sucursal/listado";
-//	}
 
+	// método que realiza la modificación de un registro
 	@PostMapping("/modificar")
 	public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal, BindingResult result, Model model) {
 		if (result.hasErrors()) {
@@ -145,12 +95,7 @@ public class SucursalController {
 		return "redirect:/sucursal/listado";
 	}
 
-	
-	/*
-	 * 
-	 * Se elimina un registro de acuerdo al id seleccionado
-	 * 
-	 */
+	// Se elimina un registro de acuerdo al id seleccionado
 	@GetMapping("/eliminar/{id}")
 	public String getEliminatSucursalPage(Model model, @PathVariable(value = "id") Long id) {
 		Sucursal sucursalEncontrada = sucursalService.buscar(id);

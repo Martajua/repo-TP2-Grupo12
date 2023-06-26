@@ -9,38 +9,35 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ar.edu.unju.fi.entity.Contacto;
 import ar.edu.unju.fi.listas.ListaContacto;
 import jakarta.validation.Valid;
 
+//En esta clase se hace referencia a la sección de contáctos de nuestro proyecto
 @Controller
 @RequestMapping("/contactos")
 public class ContactoController {
-	
+
 	@Autowired
 	ListaContacto listaContactos;
-	
+
 	@Autowired
 	private Contacto contacto;
 
-	@GetMapping("/inicioContacto") //el navegador responde a la peticion pasada que sería "contactos"
-    public String getContacto(Model model) {
+	// el navegador responde a la peticion pasada que sería "contactos"
+	@GetMapping("/inicioContacto")
+	public String getContacto(Model model) {
 		model.addAttribute("contactos", contacto);
 		return "contacto";
 	}
-	
-//	@GetMapping("/nuevo")
-//	public String getNuevoContactoPage(Model model) {
-//		model.addAttribute("contactos", contacto);
-//		return "contacto";
-//	}
-	
+
+	// método que realiza el envío de un contacto.
 	@PostMapping("/enviar")
-	public ModelAndView getEnviarContactoPage(@Valid @ModelAttribute("contactos") Contacto contacto,BindingResult result) {
+	public ModelAndView getEnviarContactoPage(@Valid @ModelAttribute("contactos") Contacto contacto,
+			BindingResult result) {
 		ModelAndView modelView = new ModelAndView("contacto");
-		if(result.hasErrors()) {
-			modelView.addObject("contactos",contacto);
+		if (result.hasErrors()) {
+			modelView.addObject("contactos", contacto);
 			return modelView;
 		}
 		listaContactos.getContactos().add(contacto);

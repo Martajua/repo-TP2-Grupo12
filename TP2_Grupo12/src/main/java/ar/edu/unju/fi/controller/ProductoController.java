@@ -18,52 +18,35 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/producto")
-/**
- * 
- * En esta clase controladora se hace referencia a todo lo referido a la sección
- * de "productos" en nuestro proyecto.
- * 
- * 
- **/
+
+// En esta clase se hace referencia a los productos de nuestro proyecto
 public class ProductoController {
 
 	@Autowired
 	@Qualifier("productoServiceMysql")
 	private IProductoService productoService;
 
-	/*
-	 * Aquí se recibe la petición del cliente y se devuelve la vista "productos" por
-	 * petición "@GetMapping"
-	 * 
-	 */
-
+	// método que permite cargar la vista de productos
 	@GetMapping("/listado")
 	public String getListaProductoPage(Model model) {
 		model.addAttribute("productos", productoService.getLista());
+
+		// retorna la vista de productos.
 		return "productos";
 	}
 
-	/*
-	 * Carga la vista del formulario. Cuando la variable edición sea falsa se va a
-	 * cargar el formulario para realizar un alta
-	 * 
-	 */
-
+	// método que nos carga el formulario para realizar un alta de productos.
 	@GetMapping("/nuevo")
 	public String getNuevoProductoPage(Model model) {
 		boolean edicion = false;
 		model.addAttribute("producto", productoService.getProducto());
 		model.addAttribute("edicion", edicion);
+		// retorna el formulario de productos.
 		return "formProductos";
 	}
 
-	/*
-	 * 
-	 * Recibe los datos pasados en el formulario por "post" y realiza el alta de
-	 * cada dato ingresado.
-	 * 
-	 */
-
+	// Recibe los datos pasados en el formulario por "post" y realiza el alta de
+	// cada dato ingresado.
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("producto") Producto producto,
 			BindingResult result) {
@@ -78,14 +61,8 @@ public class ProductoController {
 		return modelView;
 	}
 
-	/*
-	 * Carga la vista del formulario. Cuando la variable edición sea "verdadera" se
-	 * va a cargar el formulario para modificar los datos de acuerdo al código
-	 * establecido
-	 * 
-	 * 
-	 */
-
+	// método que carga la vista del formulario, se carga el formulario de acuerdo
+	// al código establecido
 	@GetMapping("/modificar/{codigo}")
 	public String getModificarProductoPage(Model model, @PathVariable(value = "codigo") Long codigo) {
 		Producto productoEncontrado = productoService.buscar(codigo);
@@ -95,11 +72,7 @@ public class ProductoController {
 		return "formProductos";
 	}
 
-	/*
-	 * 
-	 * Una vez ingresado los datos se modifican
-*/
-
+	// metodo que recibe los datos por post y modifica
 	@PostMapping("/modificar")
 	public String modificarProducto(@ModelAttribute("producto") Producto producto, BindingResult result) {
 		if (result.hasErrors()) {
@@ -109,11 +82,7 @@ public class ProductoController {
 		return "redirect:/producto/listado";
 	}
 
-	/*
-	 * 
-	 * Se elimina un registro de acuerdo al código seleccionado
-	 * 
-	 */
+	// Se elimina un registro de acuerdo al código seleccionado
 	@GetMapping("eliminar/{codigo}")
 	public String getEliminarProductoPaga(Model model, @PathVariable(value = "codigo") Long codigo) {
 		Producto productoEncontrado = productoService.buscar(codigo);
