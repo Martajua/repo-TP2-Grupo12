@@ -16,20 +16,23 @@ import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.service.IConsejoService;
 import jakarta.validation.Valid;
 
+//En esta clase se hace referencia a la sección de consejos de nuestro proyecto
 @Controller
 @RequestMapping("/consejo")
 public class ConsejoController {
-	
+
 	@Autowired
 	@Qualifier("consejoServiceMySQL")
 	private IConsejoService consejoService;
-	
+
+	// método que realiza la carga de la vista de consejos.
 	@GetMapping("/inicioConsejo")
 	public String getConsejoPage(Model model) {
 		model.addAttribute("consejos", consejoService.getListaConsejo());
 		return "consejos";
 	}
-	
+
+	// Carga la vista del formulario para realizar un alta del registro
 	@GetMapping("/nuevoConsejo")
 	public String getNuevoConsejoPage(Model model) {
 		boolean edicion = false;
@@ -37,7 +40,8 @@ public class ConsejoController {
 		model.addAttribute("edicion", edicion);
 		return "formConsejos";
 	}
-	
+
+	// Recibe los datos enviados por el formulario y realiza el alta de un registro
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarConsejoPage(@Valid @ModelAttribute("consejo") Consejo consejo, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("consejos");
@@ -50,7 +54,8 @@ public class ConsejoController {
 		modelView.addObject("consejos", consejoService.getListaConsejo());
 		return modelView;
 	}
-	
+
+	// Carga la vista del formulario con los datos envíados a modificar.
 	@GetMapping("/modificar/{num}")
 	public String getModificarConsejosPage(Model model, @PathVariable(value = "num") Long num) {
 		Consejo consejoEncontrado = consejoService.buscar(num);
@@ -59,23 +64,23 @@ public class ConsejoController {
 		model.addAttribute("edicion", edicion);
 		return "formConsejos";
 	}
-	
-	@PostMapping("/modificar")
 
+	// método que realiza la modificación de un registro
+	@PostMapping("/modificar")
 	public String modificarConsejos(@ModelAttribute("consejo") Consejo consejo, BindingResult result) {
 		if (result.hasErrors()) {
-	        return "formConsejos";
+			return "formConsejos";
 		}
 		consejoService.modificar(consejo);
 		return "redirect:/consejo/inicioConsejo";
 	}
-	
+
+	// Se elimina un registro de acuerdo al id seleccionado
 	@GetMapping("/eliminar/{num}")
 	public String getEliminarConsejosPage(Model model, @PathVariable(value = "num") Long num) {
 		Consejo consejoEncontrado = consejoService.buscar(num);
 		consejoService.eliminar(consejoEncontrado);
 		return "redirect:/consejo/inicioConsejo";
 	}
-	
-}
 
+}
