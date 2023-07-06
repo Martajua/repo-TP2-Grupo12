@@ -61,10 +61,11 @@ public class SucursalController {
 			return modelView;
 		}
 		sucursal.setEstadoSucu(true);// PRUEBA SETEAR PARA VER SI GUARDA
-		sucursal.setId((long) (sucursalService.getLista().size() + 1));// PRUEBA SETEAR PARA VER SI GUARDA
+		//sucursal.setId((long) (sucursalService.getLista().size() + 1));// PRUEBA SETEAR PARA VER SI GUARDA
 		sucursalService.guardar(sucursal);
 
 		modelView.addObject("sucursales", sucursalService.getLista());
+		modelView.setViewName("sucursales");
 		return modelView;
 	}
 

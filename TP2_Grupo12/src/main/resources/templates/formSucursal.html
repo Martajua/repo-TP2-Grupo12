@@ -14,7 +14,7 @@
 	<!-- formulario -->
 	<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
 		<input type="hidden" th:field="*{id}">
-		<input type="hidden" th:field="*{estadoSucu}">
+<!-- 		<input type="hidden" th:field="*{estadoSucu}"> -->
 		<p class="p ptitulo" th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'"></p>
 		<label for="provincia" >Provincia: </label>
 		<select th:field="*{provincia}">

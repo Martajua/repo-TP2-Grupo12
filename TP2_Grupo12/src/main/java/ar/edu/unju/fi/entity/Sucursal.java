@@ -39,7 +39,7 @@ public class Sucursal {
 	 * */
 	
 	@Column(name="sucu_nombre")
-	@NotEmpty(message = "El valor del nombre no puede esta vacio")
+	@NotEmpty(message = "El nombre no debe estar vacío")
 	@Size(min = 3, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
 	/* Con el PAttern acepta nombres con tilde */
 	@Pattern(regexp = "[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ ]+", message = "El nombre solo puede contener letras y espacios")
@@ -50,12 +50,12 @@ public class Sucursal {
 	private String provincia;
 	
 	@Column(name="sucu_direccion",length = 40,nullable = false)
-	@Size(min = 5, max = 100, message = "La direccion debe contener entre 5 y 100 caractres")
+	@NotNull(message = "Debe ingresar una Direccion")
+	@Size(min=5, max=50,message = "La direccion debe contener entre 5 y 50 caracteres")
 	private String direccion;
 	
 	@Column(name="sucu_telefono",length = 15,nullable = false)
 	@NotBlank(message="Debe ingresar Telefono")
-	@Size(min = 10, max = 15, message = "El numero de telefono debe contener entre 10 y 15 caracteres")
 	@Pattern(regexp ="[0-9]+",message="El Telefono solo debe tener numeros")
 	private String telefono;
 	
@@ -146,7 +146,4 @@ public class Sucursal {
 	}
 	
 	
-
-	
-
 }
