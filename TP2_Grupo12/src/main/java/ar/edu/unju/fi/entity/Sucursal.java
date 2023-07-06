@@ -31,7 +31,6 @@ public class Sucursal {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="sucu_id")
-	@NotNull(message = "El valor del id no puede estar vacío")
 	private Long id;
 
 	/*
@@ -50,7 +49,6 @@ public class Sucursal {
 	private String provincia;
 	
 	@Column(name="sucu_direccion",length = 40,nullable = false)
-	@NotNull(message = "Debe ingresar una Direccion")
 	@Size(min=5, max=50,message = "La direccion debe contener entre 5 y 50 caracteres")
 	private String direccion;
 	

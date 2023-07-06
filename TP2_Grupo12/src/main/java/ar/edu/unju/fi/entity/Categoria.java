@@ -8,6 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Component
 @Entity
@@ -17,9 +20,14 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cat_id")
 	private Long id;
+	
 	@Column(name = "cat_nombre")
+	@NotBlank(message = "El nombre no debe estar vacío")
+    @Size(min = 1, max = 50, message = "El nombre debe tener entre 1 y 50 caracteres")
 	private String nombre;
+	
 	@Column(name = "cat_estado")
+	@NotNull(message = "El estado no puede ser nulo")
 	private boolean estado;
 
 	public Categoria() {
